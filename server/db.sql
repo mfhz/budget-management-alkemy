@@ -9,7 +9,7 @@ CREATE TABLE users (
   disabled BOOLEAN DEFAULT FALSE
 );
 
----- Tabla de Movimientos
+---- Tabla de Tipo Movimientos
 CREATE TABLE actions (
   action_id INT PRIMARY KEY AUTO_INCREMENT,
   name VARCHAR (60) NOT NULL,

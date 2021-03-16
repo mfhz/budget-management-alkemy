@@ -253,6 +253,177 @@ server.delete("/budget/v1/users/:useremail", validateToken, async (req, res) => 
 
 
 
+////------- MOVIMIENTOS INGRESOS Y EGRESOS -------\\\\
+
+
+/**** Endpoint para traer todos los movimientos registrados solo por el administrador o si es usuario normal los movimientos que tenga ****/
+server.get("/budget/v1/accounting", validateToken, async (req, res) => {
+    const admin = req.tokenInfo.isAdmin;
+    const userId = req.tokenInfo.id;
+    try {
+        let filteraccounting = [];
+        if (admin) {
+            const accountingTypeBD = await getDataBD("accounting", true, true, true);
+            filteraccounting = accountingTypeBD.map((account) => {
+                return account;
+            });
+        } else {
+            const accountingTypeBD = await getDataBD("accounting", "user_id", userId, true);
+            filteraccounting = accountingTypeBD.map((account) => {
+                delete account.disabled;
+                return account;
+            });
+        }
+    
+        if (filteraccounting.length > 0) {
+            res.status(200).json(filteraccounting);
+        } else { 
+            res.status(404).json("El usuario ingresado no existe");
+        }
+    } catch (error) {
+        res.status(500).send("Ah ocurrido un error...." + error);
+    }
+});
+ 
+
+/**** Endpoint para crear registro de movimientos ****/
+server.post("/budget/v1/accounting", validateToken, async (req, res) => {    
+    const userId = req.tokenInfo.id;
+    const { concept, price, action} = req.body;
+    try {
+        if (concept && price && action) {
+            const register = await sequelize.query(
+                "INSERT INTO accounting (concept, price, date, action_id, user_id) VALUES (:concept, :price, :date, :action, :userId)",
+                { replacements: { concept, price, date: new Date(), action, userId } }
+            );
+
+            const actionTable = await getDataBD("actions", "action_id", action, true);
+            // console.log(actionTable);
+            // console.log(actionTable[0].name);
+            
+
+            // console.log(`el ${actionTable[0].name} fue creada con éxito`);
+            res.status(200).json(`El ${actionTable[0].name} ha sido generada correctamente`);
+        } else {
+            res.status(400).send('Se debe ingresar todos los campos para crear el registro')
+        }
+    } catch (error) {
+        res.status(500).send("Ah ocurrido un error...." + error);
+    }
+});
+ 
+
+/**** Endpoint para buscar un ingreso o egreso registrado por su ID ****/
+server.get("/budget/v1/accounting/:id", validateToken, async (req, res) => {
+    const accountingID = req.params.id;
+    const admin = req.tokenInfo.isAdmin;
+	try {
+		if (admin) {
+            const accountingRegistered = await sequelize.query("SELECT * FROM accounting WHERE accounting_id = :id;", {
+                replacements: { id: accountingID },
+                type: QueryTypes.SELECT,
+            });
+            if (accountingRegistered.length > 0) {                
+                res.status(200).json(accountingRegistered);
+            } else {
+                res.status(404).send(`El registro con ID ${accountingID} no existe`);
+            }
+        } else {
+            res.status(401).json("Acceso denegado, la cuenta debe ser administrador");
+        }
+	} catch (error) {
+		res.status(500).send("Ah ocurrido un error...." + error);
+	}
+});
+
+
+/**** Endpoint para actualizar el valor del ingreso o egreso registrado por su ID ****/
+server.put("/budget/v1/accounting/:id", validateToken, async (req, res) => {
+    const accountingID = req.params.id;
+    const { concept, price } = req.body;
+    try {
+        const accountingRegistered = await sequelize.query("SELECT * FROM accounting WHERE accounting_id = :id;", {
+            replacements: { id: accountingID },
+            type: QueryTypes.SELECT,
+        });
+        
+        if (accountingRegistered.length > 0) {
+            if (concept && price) {
+                const updateBD = await sequelize.query(
+                    "UPDATE accounting SET concept = :description, price = :cash WHERE accounting_id = :id",
+                    {
+                        replacements: {
+                            description: concept,
+                            cash: price,
+                            id: accountingID,
+                        },
+                    }
+                );
+                const actionTable = await getDataBD("actions", "action_id", accountingRegistered[0].action_id, true);
+                console.log(`El ${actionTable[0].name} ha sido actualizado correctamente`)
+                res.status(200).json(`El ${actionTable[0].name} ha sido actualizado correctamente`);
+            } else if (concept) {
+                const updateBD = await sequelize.query(
+                    "UPDATE accounting SET concept = :description WHERE accounting_id = :id",
+                    {
+                        replacements: {
+                            description: concept,
+                            id: accountingID,
+                        },
+                    }
+                );
+                const actionTable = await getDataBD("actions", "action_id", accountingRegistered[0].action_id, true);
+                console.log(`El ${actionTable[0].name} ha sido actualizado correctamente`)
+                res.status(200).json(`El ${actionTable[0].name} ha sido actualizado correctamente`);
+            } else if (price) {
+                const updateBD = await sequelize.query(
+                    "UPDATE accounting SET price = :cash WHERE accounting_id = :id",
+                    {
+                        replacements: {
+                            cash: price,
+                            id: accountingID,
+                        },
+                    }
+                );
+                const actionTable = await getDataBD("actions", "action_id", accountingRegistered[0].action_id, true);
+                console.log(`El ${actionTable[0].name} ha sido actualizado correctamente`)
+                res.status(200).json(`El ${actionTable[0].name} ha sido actualizado correctamente`);
+            } else {
+                res.status(400).send('Se debe ingresar al menos un parametro para actualizar el registro');
+            }
+        } else {
+            res.status(404).send(`El registro con ID ${accountingID} no existe`);            
+        }
+    } catch (error) {
+        res.status(500).send("Ah ocurrido un error...." + error);
+    }
+});
+
+
+/**** Endpoint para eliminar los registros por su ID ****/
+server.delete("/budget/v1/accounting/:id", validateToken, async (req, res) => {
+    const accountingID = req.params.id;
+    const admin = req.tokenInfo.isAdmin;
+	try {
+		if (admin) {
+            const accountingTypeBD = await getDataBD("accounting", "accounting_id", accountingID, true);
+            if (accountingTypeBD) {
+                const update = await sequelize.query("UPDATE accounting SET disabled = true WHERE accounting_id = :id", {
+                    replacements: {
+                        id: accountingID,
+                    },
+                });
+                res.status(200).send(`El registro con ID ${accountingID} se deshabilitó correctamente`);
+            } else {
+                res.status(404).send(`El registro con ID ${accountingID} no existe`);
+            }
+        } else {
+            res.status(401).json("Acceso denegado, la cuenta debe ser administrador");
+        }
+	} catch (error) {
+		res.status(500).send("Ah ocurrido un error...." + error);
+	}
+});
 
 
 ////------- FUNCIONES -------\\\\
