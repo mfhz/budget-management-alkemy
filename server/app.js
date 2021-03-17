@@ -426,6 +426,148 @@ server.delete("/budget/v1/accounting/:id", validateToken, async (req, res) => {
 });
 
 
+
+////------- TIPO DE MOVIMIENTOS (INGRESO Y EGRESO) -------\\\\
+
+
+/**** Endpoint para obtener todas las regiones (Solo Administrador) ****/
+server.get("/budget/v1/actions/", validateToken, async (req, res) => {
+    const admin = req.tokenInfo.isAdmin;
+    try {
+        if (admin) {
+            const getActions = await getDataBD('actions', true, true, true);
+            if (getActions.length > 0) {
+                res.status(200).json({data: getActions});
+            } else {
+                res.status(404).send("No hay tipo de movimientos creados");
+            }
+        } else {
+            res.status(401).json("Acceso denegado, la cuenta debe ser administrador");
+        }
+    } catch (error) {
+        res.status(500).send("Ah ocurrido un error...." + error);
+    }
+})
+
+
+/**** Endpoint para crear un tipo de movimiento (Solo Administrador) ****/
+server.post("/budget/v1/actions/", validateToken, async (req, res) => {
+    const admin = req.tokenInfo.isAdmin;
+    const { name } = req.body;	
+    try {
+        if (admin) {            
+            const nameActionBD = await getDataBD("actions", "name", name);
+            if (nameActionBD) {
+                res.status(409).json("El nombre ingresado ya existe, por favor intente con otro");
+                return;
+            }
+            if (name ) {
+                const updateBD = await sequelize.query(
+                    "INSERT INTO actions (name) VALUES (:name)",
+                    { replacements: { name } }
+                );
+                res.status(200).json(`El tipo de movimiento "${name}" fue creado correctamente`);
+            } else {
+                res.status(400).send("Es necesario del parametro para crear el tipo de movimiento");
+            }
+        } else {
+            res.status(401).json("Acceso denegado, la cuenta debe ser administrador");
+        }
+    } catch (error) {
+        res.status(500).send("Ah ocurrido un error...." + error);
+    }
+})
+
+
+/**** Endpoint para buscar un tipo de movimiento en especifico (Solo Administrador) ****/
+server.get("/budget/v1/actions/:name", validateToken, async (req, res) => {
+    const admin = req.tokenInfo.isAdmin;
+	const nameAction = req.params.name;
+	try {
+		if (admin) {
+            const actionBD = await getDataBD("actions", "name", nameAction);
+		    if (actionBD) {
+		    	res.status(200).json({data: actionBD});
+		    } else {
+		    	res.status(404).json("El nombre ingresado no existe");
+		    }
+        } else {
+            res.status(401).json("Acceso denegado, la cuenta debe ser administrador");
+        }
+	} catch (error) {
+		res.status(500).send("Ah ocurrido un error...." + error);
+	}
+});
+
+
+/**** Endpoint para actualizar un tipo de movimiento en especifico (Solo Administrador) ****/
+server.put("/budget/v1/actions/:name", validateToken, async (req, res) => {
+    const admin = req.tokenInfo.isAdmin;
+	const nameAction = req.params.name;
+	try {
+		if (admin) {
+            const actionBD = await getDataBD("actions", "name", nameAction);
+            const actionId = actionBD.action_id;
+		    if (actionBD) {
+                const { name, disabled } = req.body;
+                if (name || disabled) {
+                    const actionFilter = filterProps({ name, disabled });
+                    const updateAction = { ...actionBD, ...actionFilter };
+                    console.log(updateAction);
+                    const updateBD = await sequelize.query (
+                        "UPDATE actions SET name = :nameUpdate, disabled = :isDisabled WHERE action_id = :actionId",
+                        {
+                            replacements: {
+                                nameUpdate: updateAction.name,
+                                isDisabled: updateAction.disabled,
+                                actionId: actionId,
+                            },
+                        }
+                    );
+                    res.status(200).json(`El tipo de movimiento con ID ${actionId} ha sido actualizado correctamente`);
+                } else {
+                    res.status(400).json("Debe haber por lo menos un parametro para actualizar un tipo de movimiento");
+                }		    	
+		    } else {
+		    	res.status(404).json("El nombre ingresado no existe");
+		    }
+        } else {
+            res.status(401).json("Acceso denegado, la cuenta debe ser administrador");
+        }
+	} catch (error) {
+		res.status(500).send("Ah ocurrido un error...." + error);
+	}
+});
+
+
+/**** Endpoint para eliminar una región en especifico (Solo Administrador) ****/
+server.delete("/budget/v1/actions/:name", validateToken, async (req, res) => {
+    admin = req.tokenInfo.isAdmin;
+    const nameAction = req.params.name;
+    if (admin) {
+        const actionBD = await getDataBD("actions", "name", nameAction);
+        const actionId = actionBD.action_id;
+        if (actionBD) {
+            const updateBD = await sequelize.query(`UPDATE actions set disabled = true WHERE action_id = :actionId`, {
+                replacements: {
+                    actionId: actionId,
+                },
+            });
+            res.status(200).json(`El tipo de movimiento "${nameAction}" ha sido eliminado correctamente`);
+        } else {
+            res.status(404).json("El nombre ingresado no existe");
+        }
+    } else {
+        res.status(401).json("Acceso denegado, la cuenta debe ser administrador");
+    }
+});
+
+
+
+
+
+
+
 ////------- FUNCIONES -------\\\\
 
 
@@ -447,7 +589,17 @@ async function getDataBD(tabla, tablaParametros = 'TRUE', input = 'TRUE', comple
 }
 
 
-/**** Función para validar la firma del Token ****/
+/**** Funcion donde verifica si un objeto tiene campos nulos o indefinidos y los que tienen valor los guarda en un nuevo objeto****/
+function filterProps(obj) {
+    Object.keys(obj).forEach((key) => !obj[key] && delete obj[key]);
+	return obj;
+}
+
+
+////------- MIDDLEWARE -------\\\\
+
+
+/**** Middleware para validar la firma del Token ****/
 async function validateToken(req, res, next) {
 	const tokenData = req.headers.authorization.split(" ")[1];
 	try {
@@ -465,11 +617,4 @@ async function validateToken(req, res, next) {
 	} catch (e) {
 		res.status(401).json("El token es invalido");
 	}
-}
-
-
-/**** Funcion donde verifica si un objeto tiene campos nulos o indefinidos y los que tienen valor los guarda en un nuevo objeto****/
-function filterProps(obj) {
-    Object.keys(obj).forEach((key) => !obj[key] && delete obj[key]);
-	return obj;
 }
