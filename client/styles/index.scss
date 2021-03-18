@@ -76,4 +76,109 @@ body {
             }
         }
     }
+
+    .main {
+
+        .main__balance {
+            padding-top: 9.375vw;
+
+            .main__balance--complete {
+                text-align: center;
+
+                .title-balance {
+                    color: #ffffff;
+                    font-size: 7.8125vw;
+
+                }
+
+                .text-balance {
+                    color: #ffffff;
+                    font-size: 6.25vw;
+                    margin-top: 15px;
+                }
+            }
+
+            .main__balance--actions {
+                display: flex;
+                justify-content: space-between;
+                margin-top: 50px;
+                padding: 0 5%;
+
+                .incomes {
+
+                    .incomes__container {
+                        display: flex;
+
+                        .incomes__container--button {
+                            width: 15.625vw;
+                            height: 15.625vw;
+                            background-color: #21C08B;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-right: 5px;
+                        
+                            .fa-arrow-up {
+                                color: #ffffff;
+                                font-size: 4.375vw;
+                            }
+                        }
+                    }
+
+                    .incomes__container--text {
+
+                        .incomes-title {
+                            color: #ffffff;
+                            font-size: 5vw;
+                        }
+
+                        .incomes-value {
+                            color: #21C08B;
+                            font-weight: bold;
+                            font-size: 5.625vw;
+                        }
+                    }
+                }
+
+                .expenses {
+
+                    .expenses__container {
+                        display: flex;                        
+
+                        .expenses__container--button {
+                            width: 15.625vw;
+                            height: 15.625vw;
+                            background-color: #F12972;
+                            border-radius: 50%;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            margin-right: 5px;
+
+                            .fa-arrow-down {
+                                color: #ffffff;
+                                font-size: 4.375vw;
+                            }
+                        }
+
+                        .expenses__container--text {
+
+                            .expenses-title {
+                                color: #ffffff;
+                                font-size: 5vw;
+                            }
+
+                            .expenses-value {
+                                color: #F12972;
+                                font-weight: bold;
+                                font-size: 5.625vw;
+                            }
+
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

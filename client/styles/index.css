@@ -92,4 +92,112 @@ body .header .header__menu .header__menu--list .item .two {
   top: -3.125vw;
   background-color: #21C08B;
 }
+
+body .main .main__balance {
+  padding-top: 9.375vw;
+}
+
+body .main .main__balance .main__balance--complete {
+  text-align: center;
+}
+
+body .main .main__balance .main__balance--complete .title-balance {
+  color: #ffffff;
+  font-size: 7.8125vw;
+}
+
+body .main .main__balance .main__balance--complete .text-balance {
+  color: #ffffff;
+  font-size: 6.25vw;
+  margin-top: 15px;
+}
+
+body .main .main__balance .main__balance--actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 50px;
+  padding: 0 5%;
+}
+
+body .main .main__balance .main__balance--actions .incomes .incomes__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--button {
+  width: 15.625vw;
+  height: 15.625vw;
+  background-color: #21C08B;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 5px;
+}
+
+body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--button .fa-arrow-up {
+  color: #ffffff;
+  font-size: 4.375vw;
+}
+
+body .main .main__balance .main__balance--actions .incomes .incomes__container--text .incomes-title {
+  color: #ffffff;
+  font-size: 5vw;
+}
+
+body .main .main__balance .main__balance--actions .incomes .incomes__container--text .incomes-value {
+  color: #21C08B;
+  font-weight: bold;
+  font-size: 5.625vw;
+}
+
+body .main .main__balance .main__balance--actions .expenses .expenses__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--button {
+  width: 15.625vw;
+  height: 15.625vw;
+  background-color: #F12972;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-right: 5px;
+}
+
+body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--button .fa-arrow-down {
+  color: #ffffff;
+  font-size: 4.375vw;
+}
+
+body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--text .expenses-title {
+  color: #ffffff;
+  font-size: 5vw;
+}
+
+body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--text .expenses-value {
+  color: #F12972;
+  font-weight: bold;
+  font-size: 5.625vw;
+}
 /*# sourceMappingURL=index.css.map */
