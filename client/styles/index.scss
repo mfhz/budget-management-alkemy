@@ -11,7 +11,9 @@ body {
 
     .profile {
         display: flex;
+        align-items: center;
         justify-content: flex-end;
+        height: 100px;
 
         .profile__container {
             width: 60px;
@@ -80,7 +82,7 @@ body {
     .main {
 
         .main__balance {
-            padding-top: 9.375vw;
+            padding-top: 6.375vw;
 
             .main__balance--complete {
                 text-align: center;
@@ -180,5 +182,115 @@ body {
                 }
             }
         }
+
+        .main__registers {
+            margin-top: 100px;
+
+            .main__registers--container {
+
+                .menu {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    height: 15.625vw;
+                    border: 1px solid rgba(255,255,255,.5);
+                    border-bottom: 1px solid rgba(255,255,255,.5);
+                    
+                    .menu__container {
+                        display: flex;
+                        align-items: center;
+
+                        &:nth-child(0n + 1) {
+                            // background-color: brown;
+                            padding-left: 4vw;
+                        }
+                        &:nth-child(0n + 2) {
+                            position: relative;
+                            right: -3.5vw;
+                        }
+                        &:nth-child(0n + 3) {
+                            position: relative;
+                            right: -3vw;
+                        } 
+                        &:nth-child(0n + 4) {
+                            position: relative;
+                            right: -2vw;
+                        }                         
+                        
+                        .menu__container--title {
+                            color: #ffffff;
+                            margin-right: 0.6vw;
+                            font-size: 3.7vw;
+                        }
+        
+                        .menu__container--icon {
+                            color: #ffffff;
+                            transform: rotate(90deg);
+
+                            .fa-exchange-alt {
+                                font-size: 3.75vw;
+                            }
+                        }
+                    }
+                }
+
+                .items-register {
+
+                    .register {
+                        border: 1px solid rgba(255,255,255,.5);
+                        border-top: unset;
+                        padding: 4vw 0;
+                        padding-left: 1.33vw;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+    
+                        .register__concept {
+                            font-size: 3.2vw;
+                            color: #ffffff;
+                            width: 29.33vw;
+                         }
+         
+                        .register__amount {
+                            font-size: 3.2vw;
+                            color: #ffffff;
+                            position: relative;
+                            left: -4.66vw;
+                            width: 20vw;
+                            text-align: center;
+                        }
+    
+                        .register__date {
+                            font-size: 3.2vw;
+                            color: #ffffff;
+                            width: 16vw;
+                            position: relative;
+                            left: -5.33vw;
+                        }
+    
+                        .register__movement-type {
+                            font-size: 3.2vw;
+                            color: #ffffff;
+                            position: relative;
+                            left: -7vw;
+                        }                   
+        
+                        .register__options {
+                            position: relative;
+                            left: -3.75vw;
+                            color: rgba(255,255,255,0.50);
+        
+                            .fa-ellipsis-h {
+                                font-size: 5.33vw;
+                            }
+                        }
+                    }
+                }
+            }
+
+            
+        }
+
+        
     }
 }

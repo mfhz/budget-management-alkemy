@@ -15,9 +15,13 @@ body .profile {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+  height: 100px;
 }
 
 body .profile .profile__container {
@@ -94,7 +98,7 @@ body .header .header__menu .header__menu--list .item .two {
 }
 
 body .main .main__balance {
-  padding-top: 9.375vw;
+  padding-top: 6.375vw;
 }
 
 body .main .main__balance .main__balance--complete {
@@ -199,5 +203,124 @@ body .main .main__balance .main__balance--actions .expenses .expenses__container
   color: #F12972;
   font-weight: bold;
   font-size: 5.625vw;
+}
+
+body .main .main__registers {
+  margin-top: 100px;
+}
+
+body .main .main__registers .main__registers--container .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 15.625vw;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+body .main .main__registers .main__registers--container .menu .menu__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .main .main__registers .main__registers--container .menu .menu__container:nth-child(0n + 1) {
+  padding-left: 4vw;
+}
+
+body .main .main__registers .main__registers--container .menu .menu__container:nth-child(0n + 2) {
+  position: relative;
+  right: -3.5vw;
+}
+
+body .main .main__registers .main__registers--container .menu .menu__container:nth-child(0n + 3) {
+  position: relative;
+  right: -3vw;
+}
+
+body .main .main__registers .main__registers--container .menu .menu__container:nth-child(0n + 4) {
+  position: relative;
+  right: -2vw;
+}
+
+body .main .main__registers .main__registers--container .menu .menu__container .menu__container--title {
+  color: #ffffff;
+  margin-right: 0.6vw;
+  font-size: 3.7vw;
+}
+
+body .main .main__registers .main__registers--container .menu .menu__container .menu__container--icon {
+  color: #ffffff;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+body .main .main__registers .main__registers--container .menu .menu__container .menu__container--icon .fa-exchange-alt {
+  font-size: 3.75vw;
+}
+
+body .main .main__registers .main__registers--container .items-register .register {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-top: unset;
+  padding: 4vw 0;
+  padding-left: 1.33vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+body .main .main__registers .main__registers--container .items-register .register .register__concept {
+  font-size: 3.2vw;
+  color: #ffffff;
+  width: 29.33vw;
+}
+
+body .main .main__registers .main__registers--container .items-register .register .register__amount {
+  font-size: 3.2vw;
+  color: #ffffff;
+  position: relative;
+  left: -4.66vw;
+  width: 20vw;
+  text-align: center;
+}
+
+body .main .main__registers .main__registers--container .items-register .register .register__date {
+  font-size: 3.2vw;
+  color: #ffffff;
+  width: 16vw;
+  position: relative;
+  left: -5.33vw;
+}
+
+body .main .main__registers .main__registers--container .items-register .register .register__movement-type {
+  font-size: 3.2vw;
+  color: #ffffff;
+  position: relative;
+  left: -7vw;
+}
+
+body .main .main__registers .main__registers--container .items-register .register .register__options {
+  position: relative;
+  left: -3.75vw;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body .main .main__registers .main__registers--container .items-register .register .register__options .fa-ellipsis-h {
+  font-size: 5.33vw;
 }
 /*# sourceMappingURL=index.css.map */
