@@ -32,6 +32,10 @@ body .header .header__profile .header__profile--img {
   padding: 15% 0;
 }
 
+body .header .header__welcome {
+  display: none;
+}
+
 body .header .header__menu {
   height: 15.625vw;
   width: 100%;
@@ -140,7 +144,7 @@ body .main .main__balance .main__balance--actions .incomes .incomes__container .
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-right: 5px;
+  margin-right: 1.33vw;
 }
 
 body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--button .fa-arrow-up {
@@ -179,7 +183,7 @@ body .main .main__balance .main__balance--actions .expenses .expenses__container
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  margin-right: 5px;
+  margin-right: 1.33vw;
 }
 
 body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--button .fa-arrow-down {
@@ -335,6 +339,14 @@ body .main .main__registers .main__registers--container .items-register .registe
     display: -ms-flexbox;
     display: flex;
   }
+  body .header .header__welcome {
+    display: block;
+    margin-right: 18vw;
+  }
+  body .header .header__welcome .header__welcome--text {
+    color: #ffffff;
+    font-size: 2.6vw;
+  }
   body .header .header__menu {
     position: unset;
     width: unset;
@@ -356,6 +368,47 @@ body .main .main__registers .main__registers--container .items-register .registe
   }
   body .header .header__menu .header__menu--list .item-two {
     display: none;
+  }
+  body .main .main__balance .main__balance--complete .title-balance {
+    font-size: 3vw;
+  }
+  body .main .main__balance .main__balance--complete .text-balance {
+    font-size: 2.5vw;
+  }
+  body .main .main__balance .main__balance--actions {
+    padding: 0 15%;
+  }
+  body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--button {
+    width: 8vw;
+    height: 8vw;
+  }
+  body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--button .fas {
+    font-size: 3.3vw;
+  }
+  body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--text {
+    padding-top: 5%;
+  }
+  body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--text .incomes-title {
+    font-size: 2.2vw;
+  }
+  body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--text .incomes-value {
+    font-size: 2vw;
+  }
+  body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--button {
+    width: 8vw;
+    height: 8vw;
+  }
+  body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--button .fas {
+    font-size: 3.3vw;
+  }
+  body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--text {
+    padding-top: 5%;
+  }
+  body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--text .expenses-title {
+    font-size: 2.2vw;
+  }
+  body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--text .expenses-value {
+    font-size: 2vw;
   }
 }
 /*# sourceMappingURL=index.css.map */
