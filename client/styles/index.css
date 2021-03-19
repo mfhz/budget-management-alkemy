@@ -316,4 +316,46 @@ body .main .main__registers .main__registers--container .items-register .registe
 body .main .main__registers .main__registers--container .items-register .register .register__options .fa-ellipsis-h {
   font-size: 5.33vw;
 }
+
+@media screen and (min-width: 1000px) {
+  body .header {
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 0 5%;
+    padding-top: 2%;
+  }
+  body .header .header__profile {
+    margin: unset;
+    width: 80px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  body .header .header__menu {
+    position: unset;
+    width: unset;
+    height: unset;
+  }
+  body .header .header__menu .header__menu--list {
+    -webkit-box-pack: unset;
+        -ms-flex-pack: unset;
+            justify-content: unset;
+  }
+  body .header .header__menu .header__menu--list .item .item__container .fas {
+    display: none;
+  }
+  body .header .header__menu .header__menu--list .item .item__container .item__container--text {
+    font-size: 2.6vw;
+  }
+  body .header .header__menu .header__menu--list .home {
+    margin-right: 5vw;
+  }
+  body .header .header__menu .header__menu--list .item-two {
+    display: none;
+  }
+}
 /*# sourceMappingURL=index.css.map */

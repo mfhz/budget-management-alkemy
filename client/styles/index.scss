@@ -295,4 +295,52 @@ body {
 
 @media screen and (min-width: 1000px) {
 
+    body {
+        
+        .header {
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+            padding-top: 2%;
+
+            .header__profile {
+                margin: unset;
+                width: 80px;
+                display: flex;
+            }
+
+            .header__menu {
+                position: unset;
+                width: unset;
+                height: unset;
+
+                .header__menu--list {
+                    justify-content: unset;
+
+                    .item {
+
+                        .item__container {
+
+                            .fas {
+                                display: none;
+                            }
+    
+                            .item__container--text {
+                                font-size: 2.6vw;
+                            }
+                        }
+                    }
+
+                    .home {
+                        margin-right: 5vw;
+                    }
+
+                    .item-two {
+                        display: none;
+                    }
+                }
+            }
+        }
+    }
+
 }
