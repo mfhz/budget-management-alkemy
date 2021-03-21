@@ -48,6 +48,7 @@ body {
 
                 .item {
                     list-style: none;
+                    cursor: pointer;
 
                     .item__container {
                         text-align: center;
@@ -186,6 +187,20 @@ body {
 
         .main__registers {
             margin-top: 100px;
+
+            .main__registers--title {
+                margin-bottom: 6.66vw;
+                text-align: center;
+
+                .actions-title {
+                    color: #ffffff;
+                    font-size: 6vw;
+                }
+            }
+
+            .main__registers--buttons {
+                display: none;
+            }
 
             .main__registers--container {
 
@@ -428,6 +443,144 @@ body {
                         }
                     }
                 }
+            }
+
+            .main__registers {
+
+                .main__registers--title {
+                    padding-left: 20px;
+                    margin: 0;
+                    
+                    .actions-title {
+                        font-size: 3vw;
+                        text-align: left;
+                    }
+                }
+
+                .main__registers--buttons {
+                    display: flex;
+                    justify-content: flex-end;
+                    margin-bottom: 50px;
+
+                    .button-export {
+                        width: 15vw;
+                        line-height: 4vw;
+                        background: #21C08B;
+                        margin-right: 2.5vw;
+                        text-align: center;
+                        cursor: pointer;
+                        
+
+                        .button-export__text {
+                            color: #ffffff;
+                            font-size: 1.4vw;
+                        }
+                    }
+
+                    .button-incomes {
+                        width: 15vw;
+                        line-height: 4vw;
+                        background: #21C08B;
+                        margin-right: 2.5vw;
+                        text-align: center;
+                        cursor: pointer;
+
+                        .button-incomes__text {
+                            color: #ffffff;
+                            font-size: 1.4vw;
+                        }
+                    }
+
+                    .button-expenses {
+                        width: 15vw;
+                        line-height: 4vw;
+                        background: #21C08B;
+                        margin-right: 2.5vw;
+                        text-align: center;
+                        cursor: pointer;
+
+                        .button-expenses__text {
+                            color: #ffffff;
+                            font-size: 1.4vw;
+                        }
+                    }
+                }
+
+                .main__registers--container {
+
+                    .menu {
+                        height: 6.625vw;
+
+                        .menu__container {
+
+                            &:nth-child(0n + 1) {
+                                padding-left: 2vw;
+                            }
+                            &:nth-child(0n + 2) {
+                                right: -5.5vw;
+                            }
+                            &:nth-child(0n + 3) {
+                                right: -5vw;
+                            } 
+                            &:nth-child(0n + 4) {
+                                right: -3vw;
+                            }
+                            &:nth-child(0n + 5) {
+                                margin-right: 2.5vw;
+
+                                .menu__container--title {
+                                    margin: 0;
+                                }
+
+                            } 
+
+                            .menu__container--title {
+                                font-size: 2.4vw;
+                            }
+                            
+                            .menu__container--icon {
+                                
+                                .fa-exchange-alt {
+                                    font-size: 2.1vw;
+                                }
+                            }
+                        }
+                    }
+
+                    .items-register {
+
+                        .register {
+
+                            .register__concept {
+                                font-size: 2vw;
+                            }
+
+                            .register__amount {
+                                font-size: 2vw;
+                                left: -8.66vw;
+                            }
+
+                            .register__date {
+                                font-size: 2vw;
+                                left: -7.33vw;
+                            }
+
+                            .register__movement-type {
+                                font-size: 2vw;
+                                left: -10vw;
+                            }
+
+                            .register__options {
+                                left: -4.75vw;
+
+                                .fas {
+                                    font-size: 2.33vw;
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
         }
     }
