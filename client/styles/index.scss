@@ -189,7 +189,7 @@ body {
             margin-top: 100px;
 
             .main__registers--title {
-                margin-bottom: 6.66vw;
+                margin-bottom: 8.66vw;
                 text-align: center;
 
                 .actions-title {
@@ -279,9 +279,10 @@ body {
                         .register__date {
                             font-size: 3.2vw;
                             color: #ffffff;
-                            width: 16vw;
+                            width: 18vw;
                             position: relative;
                             left: -5.33vw;
+                            text-align: center;
                         }
     
                         .register__movement-type {
@@ -299,6 +300,22 @@ body {
                             .fa-ellipsis-h {
                                 font-size: 5.33vw;
                             }
+                        }
+                    }
+
+                    .items-register__default {
+                        text-align: center;
+                        margin-bottom: 50px;
+
+                        .items-register__default--img {
+                            margin-bottom: 30px;
+                        }
+
+                        .items-register__default--text {
+                            width: 250px;
+                            margin: 0 auto;
+                            color: #ffffff;
+                            font-size: 22px;
                         }
                     }
                 }
@@ -562,12 +579,12 @@ body {
 
                             .register__date {
                                 font-size: 2vw;
-                                left: -7.33vw;
+                                left: -11.33vw;
                             }
 
                             .register__movement-type {
                                 font-size: 2vw;
-                                left: -10vw;
+                                left: -11vw;
                             }
 
                             .register__options {
@@ -576,6 +593,14 @@ body {
                                 .fas {
                                     font-size: 2.33vw;
                                 }
+                            }
+                        }
+                        
+                        .items-register__default {
+    
+                            .items-register__default--text {
+                                width: 25vw;
+                                font-size: 2.2vw;
                             }
                         }
                     }

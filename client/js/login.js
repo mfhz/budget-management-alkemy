@@ -15,6 +15,8 @@ async function succesLogin(e) {
         if (success.statusText) {
             guardarLS(success.data.token);
             window.location.href = 'index.html';
+        } else {
+            
         }
     }).catch((err) => {
         console.log(err);

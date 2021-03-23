@@ -208,7 +208,7 @@ body .main .main__registers {
 }
 
 body .main .main__registers .main__registers--title {
-  margin-bottom: 6.66vw;
+  margin-bottom: 8.66vw;
   text-align: center;
 }
 
@@ -314,9 +314,10 @@ body .main .main__registers .main__registers--container .items-register .registe
 body .main .main__registers .main__registers--container .items-register .register .register__date {
   font-size: 3.2vw;
   color: #ffffff;
-  width: 16vw;
+  width: 18vw;
   position: relative;
   left: -5.33vw;
+  text-align: center;
 }
 
 body .main .main__registers .main__registers--container .items-register .register .register__movement-type {
@@ -334,6 +335,22 @@ body .main .main__registers .main__registers--container .items-register .registe
 
 body .main .main__registers .main__registers--container .items-register .register .register__options .fa-ellipsis-h {
   font-size: 5.33vw;
+}
+
+body .main .main__registers .main__registers--container .items-register .items-register__default {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+body .main .main__registers .main__registers--container .items-register .items-register__default .items-register__default--img {
+  margin-bottom: 30px;
+}
+
+body .main .main__registers .main__registers--container .items-register .items-register__default .items-register__default--text {
+  width: 250px;
+  margin: 0 auto;
+  color: #ffffff;
+  font-size: 22px;
 }
 
 @media screen and (min-width: 1000px) {
@@ -514,17 +531,21 @@ body .main .main__registers .main__registers--container .items-register .registe
   }
   body .main .main__registers .main__registers--container .items-register .register .register__date {
     font-size: 2vw;
-    left: -7.33vw;
+    left: -11.33vw;
   }
   body .main .main__registers .main__registers--container .items-register .register .register__movement-type {
     font-size: 2vw;
-    left: -10vw;
+    left: -11vw;
   }
   body .main .main__registers .main__registers--container .items-register .register .register__options {
     left: -4.75vw;
   }
   body .main .main__registers .main__registers--container .items-register .register .register__options .fas {
     font-size: 2.33vw;
+  }
+  body .main .main__registers .main__registers--container .items-register .items-register__default .items-register__default--text {
+    width: 25vw;
+    font-size: 2.2vw;
   }
 }
 /*# sourceMappingURL=index.css.map */

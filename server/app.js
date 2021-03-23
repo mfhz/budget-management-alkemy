@@ -273,13 +273,9 @@ server.get("/budget/v1/accounting", validateToken, async (req, res) => {
                 delete account.disabled;
                 return account;
             });
-        }
-    
-        if (filteraccounting.length > 0) {
-            res.status(200).json(filteraccounting);
-        } else { 
-            res.status(404).json("El usuario ingresado no existe");
-        }
+        }        
+        res.status(200).json(filteraccounting);
+
     } catch (error) {
         res.status(500).send("Ah ocurrido un error...." + error);
     }
@@ -430,7 +426,7 @@ server.delete("/budget/v1/accounting/:id", validateToken, async (req, res) => {
 ////------- TIPO DE MOVIMIENTOS (INGRESO Y EGRESO) -------\\\\
 
 
-/**** Endpoint para obtener todas las regiones (Solo Administrador) ****/
+/**** Endpoint para obtener todas las acciones (Solo Administrador) ****/
 server.get("/budget/v1/actions/", validateToken, async (req, res) => {
     const admin = req.tokenInfo.isAdmin;
     try {
@@ -573,7 +569,7 @@ server.delete("/budget/v1/actions/:name", validateToken, async (req, res) => {
 
 /**** Función donde se genera el Token ****/
 function generateToken(data) {
-	return jwt.sign(data, signing, { expiresIn: "50m" });
+	return jwt.sign(data, signing, { expiresIn: "20m" });
 }
 
 
@@ -585,7 +581,7 @@ async function getDataBD(tabla, tablaParametros = 'TRUE', input = 'TRUE', comple
 		type: QueryTypes.SELECT,
     });
     // console.log(results);
-	return results.length > 0 ? (completo ? results :  results[0]) : false;
+	return results.length > 0 ? (completo ? results :  results[0]) : [];
 }
 
 
