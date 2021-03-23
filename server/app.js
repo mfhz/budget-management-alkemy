@@ -32,7 +32,7 @@ server.use(cors());
 
 /**** Endpoint al hacer login entrega token  ****/
 server.get("/budget/v1/users/login", async (req, res) => {
-    const { email, pass } = req.body;
+    const { email, pass } = req.query;
 	try {
         const emailBD = await getDataBD("users", "mail", email);
         if (email && pass) {
