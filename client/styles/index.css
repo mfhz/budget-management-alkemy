@@ -280,6 +280,10 @@ body .main .main__registers .main__registers--container .menu .menu__container .
   font-size: 3.75vw;
 }
 
+body .main .main__registers .main__registers--container .items-register {
+  margin-bottom: 15.625vw;
+}
+
 body .main .main__registers .main__registers--container .items-register .register {
   border: 1px solid rgba(255, 255, 255, 0.5);
   border-top: unset;
@@ -521,6 +525,9 @@ body .main .main__registers .main__registers--container .items-register .items-r
   }
   body .main .main__registers .main__registers--container .menu .menu__container .menu__container--icon .fa-exchange-alt {
     font-size: 2.1vw;
+  }
+  body .main .main__registers .main__registers--container .items-register {
+    margin: 0;
   }
   body .main .main__registers .main__registers--container .items-register .register .register__concept {
     font-size: 2vw;

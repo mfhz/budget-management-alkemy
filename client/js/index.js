@@ -26,6 +26,7 @@ async function getRegistersBD(e) {
             if (success.statusText) {
                 if (success.data.length) {
                     printContentRegisters(success.data);      
+                    printBalance(success.data);      
                 } else {
                     printDefaulRegister();
                 }
@@ -56,6 +57,7 @@ function leerLocalStorage () {
     return tokenUser;
 }
 
+
 function guardarLS(user) {
     const token = {
         token: user
@@ -79,7 +81,7 @@ function obtenerTokenLocalStorage() {
 
 function printContentRegisters(data) {
     data.forEach(element => {
-        console.log(element);        
+        // console.log(element);        
         const registersItems = document.createElement('div');
         const concept = document.createElement('p');
         const amount = document.createElement('p');
@@ -109,9 +111,13 @@ function printContentRegisters(data) {
         registersItems.appendChild(date);
         if (actionType.textContent == 1) {
             actionType.textContent = 'Ingreso';
+            actionType.style.color = '#21C08B';
+            actionType.style.fontWeight = 'bold';
             registersItems.appendChild(actionType);
         } else {
             actionType.textContent = 'Egreso';
+            actionType.style.color = '#F12972';
+            actionType.style.fontWeight = 'bold';
             registersItems.appendChild(actionType);
         }
         registersItems.appendChild(options);
@@ -155,4 +161,27 @@ function printDefaulRegister() {
 function login() {
     location.reload();        
     window.location.href = 'login.html';
+}
+
+
+function printBalance(data) {
+    const incomes = document.querySelector('.incomes-value');
+    const expenses = document.querySelector('.expenses-value');
+    const balance = document.querySelector('.text-balance');
+    let totalIncomes = 0;
+    let totalExpenses = 0;
+
+    data.forEach(element => {
+        if (element.action_id === 1) {
+            let price = element.price
+            totalIncomes += price;
+        } else {
+            let price = element.price;
+            totalExpenses += price;
+        }
+        incomes.textContent = `$ ${totalIncomes}`;
+        expenses.textContent = `$ ${totalExpenses}`;
+    });
+    const totalBalance = totalIncomes - totalExpenses;
+    balance.textContent = `$ ${totalBalance}`;
 }
