@@ -1,6 +1,11 @@
 /**** VARIABLES GLOBALES ****/
 const containerRegisters = document.querySelector('.items-register');
 const containerMenu = document.querySelector('.menu');
+let mobile = window.matchMedia("(min-width: 1000px)");
+const containerButton = document.querySelector('.two');
+const header = document.querySelector('.header__menu');
+
+
 
 
 /// Hipervinculo a la página del perfil
@@ -45,6 +50,10 @@ async function getRegistersBD(e) {
     } else {
         login();
     }
+}
+///
+if (!mobile.matches) {
+    containerButton.addEventListener('click', optionsRegister);
 }
 
 
@@ -321,4 +330,53 @@ function updateAmount(ev) {
 function closeWindowModal(ev) {    
     const sectionModal = document.querySelector('.main__modal');
     sectionModal.style.display = 'none';
+}
+
+
+function optionsRegister() {
+
+    const buttonPrincipal = document.querySelector('.item-two')
+    const optionsContainer = document.createElement('div');
+    const incomesContainer = document.createElement('div');
+    const incomesButton = document.createElement('i')
+    const expensesContainer = document.createElement('div');
+    const expensesButton = document.createElement('i')
+
+
+    if (header.children[1]) {
+        header.removeChild(header.children[1]);
+        containerButton.children[0].classList.remove('fa-times');
+    } else {
+        containerButton.children[0].classList.add('fa-times');
+        buttonPrincipal.classList.add('item-modal');
+        optionsContainer.classList.add('header__menu--options');
+        optionsContainer.style.display = 'block';
+        incomesContainer.classList.add('options-incomes');
+        expensesContainer.classList.add('options-expenses');
+        expensesButton.classList.add('fas');
+        expensesButton.classList.add('fa-arrow-circle-down');
+        incomesButton.classList.add('fas');
+        incomesButton.classList.add('fa-arrow-circle-up');
+
+
+        header.appendChild(optionsContainer);
+        optionsContainer.appendChild(incomesContainer);
+        optionsContainer.appendChild(expensesContainer);
+        incomesContainer.appendChild(incomesButton);
+        expensesContainer.appendChild(expensesButton);
+    }
+
+    incomesContainer.addEventListener('click', registerNewIncome);
+    expensesContainer.addEventListener('click', registerNewExpense);
+
+}
+
+
+function registerNewIncome() {
+    window.location.href = 'incomes.html';
+}
+
+
+function registerNewExpense() {
+    
 }

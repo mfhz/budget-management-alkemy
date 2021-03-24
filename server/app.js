@@ -294,7 +294,10 @@ server.get("/budget/v1/accounting", validateToken, async (req, res) => {
 /**** Endpoint para crear registro de movimientos ****/
 server.post("/budget/v1/accounting", validateToken, async (req, res) => {    
     const userId = req.tokenInfo.id;
-    const { concept, price, action} = req.body;
+    const { concept, price, action} = req.query;
+    console.log(concept);
+    console.log(price);
+    console.log(action);
     try {
         if (concept && price && action) {
             const register = await sequelize.query(
@@ -307,7 +310,7 @@ server.post("/budget/v1/accounting", validateToken, async (req, res) => {
             // console.log(actionTable[0].name);
             
 
-            // console.log(`el ${actionTable[0].name} fue creada con éxito`);
+            console.log(`el ${actionTable[0].name} fue creada con éxito`);
             res.status(200).json(`El ${actionTable[0].name} ha sido generada correctamente`);
         } else {
             res.status(400).send('Se debe ingresar todos los campos para crear el registro')
