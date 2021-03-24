@@ -295,9 +295,6 @@ server.get("/budget/v1/accounting", validateToken, async (req, res) => {
 server.post("/budget/v1/accounting", validateToken, async (req, res) => {    
     const userId = req.tokenInfo.id;
     const { concept, price, action} = req.query;
-    console.log(concept);
-    console.log(price);
-    console.log(action);
     try {
         if (concept && price && action) {
             const register = await sequelize.query(
@@ -306,8 +303,6 @@ server.post("/budget/v1/accounting", validateToken, async (req, res) => {
             );
 
             const actionTable = await getDataBD("actions", "action_id", action, true);
-            // console.log(actionTable);
-            // console.log(actionTable[0].name);
             
 
             console.log(`el ${actionTable[0].name} fue creada con éxito`);

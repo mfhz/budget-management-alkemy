@@ -378,5 +378,5 @@ function registerNewIncome() {
 
 
 function registerNewExpense() {
-    
+    window.location.href = 'expenses.html';
 }
