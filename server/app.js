@@ -46,7 +46,16 @@ server.get("/budget/v1/users/login", async (req, res) => {
                     isDisabled: emailBD.disabled,
                 });
                 console.log('OK');
-                res.status(200).json({token: token});
+                const verification = jwt.verify(token, signing);
+                const userBD = await getDataBD("users", "user_id", verification.id);
+                // console.log(userBD)
+                const isDisabled = userBD.disabled;
+                if (isDisabled) {
+                    res.status(401).send("Acceso denegado, la cuenta está deshabilitada");
+                } else {
+                    console.log(verification);
+                }
+                res.status(200).json({token: token, userId: verification.id});
             } else {
                 res.status(400).send("Correo o contraseña incorrectos");
                 console.log("Correo o contraseña incorrectos");
@@ -336,7 +345,10 @@ server.get("/budget/v1/accounting/:id", validateToken, async (req, res) => {
 /**** Endpoint para actualizar el valor del ingreso o egreso registrado por su ID ****/
 server.put("/budget/v1/accounting/:id", validateToken, async (req, res) => {
     const accountingID = req.params.id;
-    const { concept, price } = req.body;
+    console.log('ACAAAAA');
+    console.log(accountingID);
+    const { concept, price } = req.query;
+    console.log(price);
     try {
         const accountingRegistered = await sequelize.query("SELECT * FROM accounting WHERE accounting_id = :id;", {
             replacements: { id: accountingID },

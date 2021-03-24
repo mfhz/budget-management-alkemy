@@ -282,6 +282,7 @@ body .main .main__registers .main__registers--container .menu .menu__container .
 
 body .main .main__registers .main__registers--container .items-register {
   margin-bottom: 15.625vw;
+  position: relative;
 }
 
 body .main .main__registers .main__registers--container .items-register .register {
@@ -355,6 +356,126 @@ body .main .main__registers .main__registers--container .items-register .items-r
   margin: 0 auto;
   color: #ffffff;
   font-size: 22px;
+}
+
+body .main .main__registers .main__registers--container .items-register .register-edit {
+  position: relative;
+}
+
+body .main .main__registers .main__registers--container .items-register .register-edit .register-modal {
+  width: 21.33vw;
+  line-height: 40px;
+  border: 1px solid #ffffff;
+  position: absolute;
+  top: 65%;
+  left: 75%;
+  background: #ffffff;
+}
+
+body .main .main__registers .main__registers--container .items-register .register-edit .register-modal .register-modal__menu {
+  text-align: center;
+}
+
+body .main .main__registers .main__registers--container .items-register .register-edit .register-modal .register-modal__menu .register-modal__menu--list {
+  list-style: none;
+  color: #8F57FD;
+  font-weight: bold;
+  font-size: 3.2vw;
+}
+
+body .main .main__modal {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  z-index: 400;
+  background: #8f57fd;
+}
+
+body .main .main__modal .main__modal--container {
+  width: 100%;
+  height: inherit;
+  position: fixed;
+  padding-top: 40vw;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .main .main__modal .main__modal--container .fa-times {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-right: 5%;
+  font-size: 22px;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+body .main .main__modal .main__modal--container .text-modal {
+  width: 80%;
+  color: #ffffff;
+  margin: 30px auto;
+  text-align: center;
+}
+
+body .main .main__modal .main__modal--container .data-modal {
+  width: 100%;
+  height: 50px;
+  border: 1px solid #ffffff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 12%;
+}
+
+body .main .main__modal .main__modal--container .data-modal .data-modal__text {
+  color: #ffffff;
+}
+
+body .main .main__modal .main__modal--container .data-modal .data-modal__info {
+  line-height: 50px;
+  background: transparent;
+  border-left: 1px solid #ffffff;
+  padding-left: 8px;
+  outline-style: none;
+  color: #ffffff;
+}
+
+body .main .main__modal .main__modal--container .data-modal .data-modal__info::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body .main .main__modal .main__modal--container .data-modal .data-modal__info:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body .main .main__modal .main__modal--container .data-modal .data-modal__info::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body .main .main__modal .main__modal--container .data-modal .data-modal__info::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body .main .main__modal .main__modal--container .button-modal {
+  width: 150px;
+  line-height: 40px;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-radius: 20px;
+  background: #21C08B;
+  color: #ffffff;
+  cursor: pointer;
 }
 
 @media screen and (min-width: 1000px) {
@@ -553,6 +674,38 @@ body .main .main__registers .main__registers--container .items-register .items-r
   body .main .main__registers .main__registers--container .items-register .items-register__default .items-register__default--text {
     width: 25vw;
     font-size: 2.2vw;
+  }
+  body .main .main__registers .main__registers--container .items-register .register-edit .register-modal .register-modal__menu {
+    cursor: pointer;
+  }
+  body .main .main__registers .main__registers--container .items-register .register-edit .register-modal .register-modal__menu .register-modal__menu--list {
+    font-size: 1.8vw;
+  }
+  body .main .main__modal .main__modal--container {
+    padding-top: 15vw;
+    overflow: hidden;
+    background: #8F57FD;
+  }
+  body .main .main__modal .main__modal--container .fa-times {
+    font-size: 35px;
+  }
+  body .main .main__modal .main__modal--container .text-modal {
+    font-size: 25px;
+  }
+  body .main .main__modal .main__modal--container .data-modal {
+    width: 52%;
+    margin: 0 auto;
+  }
+  body .main .main__modal .main__modal--container .data-modal .data-modal__text {
+    margin-right: 110px;
+  }
+  body .main .main__modal .main__modal--container .data-modal .data-modal__info {
+    padding-left: 50px;
+  }
+  body .main .main__modal .main__modal--container .button-modal {
+    width: 250px;
+    line-height: 50px;
+    border-radius: 40px;
   }
 }
 /*# sourceMappingURL=index.css.map */

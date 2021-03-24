@@ -13,7 +13,7 @@ async function succesLogin(e) {
         responseType: 'json'
     }).then((success) => {
         if (success.statusText) {
-            guardarLS(success.data.token);
+            guardarLocalStorage(success.data.token, success.data.userId);
             window.location.href = 'index.html';
         } else {
             
@@ -24,9 +24,10 @@ async function succesLogin(e) {
 }
 
 
-function guardarLS(user) {
-    const token = {
-        token: user
+function guardarLocalStorage(token, id) {
+    const user = {
+        token: token,
+        userId: id
     };
-    localStorage.setItem('token', JSON.stringify(token));
+    localStorage.setItem('token', JSON.stringify(user));
 }

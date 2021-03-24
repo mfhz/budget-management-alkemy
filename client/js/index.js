@@ -1,17 +1,22 @@
+/**** VARIABLES GLOBALES ****/
 const containerRegisters = document.querySelector('.items-register');
 const containerMenu = document.querySelector('.menu');
 
+
+/// Hipervinculo a la página del perfil
 const profile = document.querySelector('.my-profile');
 profile.addEventListener('click', () => {
     window.location.href = 'profile.html';
 });
 
+
+/**** EVENTOS ****/
+
+
 /// Al cargar la página lee el Local Storage
 document.addEventListener('DOMContentLoaded', leerLocalStorage);
 /// Al cargar la página obtener registros de la BD
 document.addEventListener('DOMContentLoaded', getRegistersBD);
-
-
 /// Obtener e imprimir los resgistros realizados por el usuario
 async function getRegistersBD(e) {
     e.preventDefault();
@@ -25,6 +30,7 @@ async function getRegistersBD(e) {
         }).then((success) => {
             if (success.statusText) {
                 if (success.data.length) {
+                    // console.log(success.data);
                     printContentRegisters(success.data);      
                     printBalance(success.data);      
                 } else {
@@ -43,14 +49,10 @@ async function getRegistersBD(e) {
 
 
 
-
-
-
-
-
-
 /**** FUNCIONES ****/
 
+
+/// Funcion para leer el localStorage una vez iniciada la aplicación
 function leerLocalStorage () {
     let tokenUser;
     tokenUser = obtenerTokenLocalStorage();
@@ -58,6 +60,7 @@ function leerLocalStorage () {
 }
 
 
+/// Funcion para guardar en localStorage
 function guardarLS(user) {
     const token = {
         token: user
@@ -66,6 +69,7 @@ function guardarLS(user) {
 }
 
 
+/// Función para obtener los datos guardados en LocalStorage
 function obtenerTokenLocalStorage() {
     let tokenUser;
 
@@ -79,6 +83,7 @@ function obtenerTokenLocalStorage() {
 }
 
 
+/// Función que imprime los registres del usuario una vez logueado
 function printContentRegisters(data) {
     data.forEach(element => {
         // console.log(element);        
@@ -103,6 +108,7 @@ function printContentRegisters(data) {
         actionType.textContent = element.action_id;
         actionType.classList.add('register__movement-type');
         options.classList.add('register__options');
+        options.setAttribute('data-id', element.accounting_id);
         icon.classList.add('fas');
         icon.classList.add('fa-ellipsis-h');
 
@@ -122,10 +128,14 @@ function printContentRegisters(data) {
         }
         registersItems.appendChild(options);
         options.appendChild(icon);
+
+        /// Editar el monto de un movimiento registrado
+        options.addEventListener('click', modalEdit);
     });
 }
 
 
+/// Función que imprime la vista Default donde no hay registros
 function printDefaulRegister() {
     const buttons = document.querySelector('.main__registers--buttons');
     const mainTitle = document.querySelector('.main__registers--title');
@@ -158,12 +168,14 @@ function printDefaulRegister() {
 }
 
 
+/// Función que redirecciona a la página de Login cuando el token esté vencido
 function login() {
     location.reload();        
     window.location.href = 'login.html';
 }
 
 
+/// Función que imprime el balance total del usuario
 function printBalance(data) {
     const incomes = document.querySelector('.incomes-value');
     const expenses = document.querySelector('.expenses-value');
@@ -184,4 +196,129 @@ function printBalance(data) {
     });
     const totalBalance = totalIncomes - totalExpenses;
     balance.textContent = `$ ${totalBalance}`;
+}
+
+
+/// Función que muestra al presionar en opciones del registro un botón para editar el mismo
+function modalEdit(ev) {
+    ev.preventDefault();
+    // console.log(ev.target);
+    const container = ev.target.parentElement.parentElement;
+    const iconOptions = ev.target;
+    const modal = document.createElement('div');
+    const listContainer = document.createElement('ul');
+    const listModal = document.createElement('li');
+
+    if (container.classList.contains('register-edit')) {
+        iconOptions.classList.remove('fa-times');
+        container.removeChild(ev.target.parentElement.parentElement.children[5]);
+        container.classList.remove('register-edit');
+    } else {
+        container.classList.toggle('register-edit');
+
+        modal.classList.add('register-modal');
+        listContainer.classList.add('register-modal__menu');
+        listModal.classList.add('register-modal__menu--list');
+        listModal.textContent = 'Editar';
+        iconOptions.classList.add('fa-times');
+
+
+        container.appendChild(modal);
+        modal.appendChild(listContainer);
+        listContainer.appendChild(listModal);
+
+        listModal.addEventListener('click', updateAmount);
+    }
+    
+}
+
+
+/// Función que muestra un modal para actualizar el valor del registro y una vez realiado en 2segundos lo manda al home
+function updateAmount(ev) {
+    const itemId = ev.target.parentElement.parentElement.parentElement.children[4];
+    // console.log(itemId.getAttribute('data-id'));
+
+    const main = document.querySelector('.main');
+    const sectionModal = document.createElement('section');
+    const containerModal = document.createElement('div')
+    const modalIcon = document.createElement('i');
+    const modalTitle = document.createElement('h3');
+    const modalTable = document.createElement('div');
+    const modaltext = document.createElement('p');
+    const inputTable = document.createElement('input');
+    const modalButton = document.createElement('input');
+
+    if (ev.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[2]) {
+        const containerModal = document.querySelector('.main');
+        // console.log(containerModal.children[2]);
+        containerModal.removeChild(containerModal.children[2]);
+    }  
+
+    sectionModal.classList.add('main__modal');
+    containerModal.classList.add('main__modal--container');
+    modalIcon.classList.add('fas');
+    modalIcon.classList.add('fa-times');
+    modalTitle.textContent = 'Actualiza el monto de tu registro';
+    modalTitle.classList.add('text-modal');
+    modalTable.classList.add('data-modal');
+    modaltext.classList.add('data-modal__text');
+    modaltext.textContent = 'Monto';
+    inputTable.classList.add('data-modal__info');
+    inputTable.setAttribute('type', 'number');
+    inputTable.setAttribute('placeholder', 'Valor del nuevo monto');
+    modalButton.setAttribute('type', 'button');
+    modalButton.setAttribute('value', 'Actualizar');
+    modalButton.classList.add('button-modal');
+    sectionModal.style.display = 'block';
+
+    main.appendChild(sectionModal);
+    sectionModal.appendChild(containerModal);
+    containerModal.appendChild(modalIcon);
+    containerModal.appendChild(modalTitle);
+    containerModal.appendChild(modalTitle);
+    containerModal.appendChild(modalTable);
+    modalTable.appendChild(modaltext);
+    modalTable.appendChild(inputTable);
+    containerModal.appendChild(modalButton);   
+
+
+    modalIcon.addEventListener('click', closeWindowModal);
+    modalButton.addEventListener('click', async (ev) => {
+        ev.preventDefault();
+        const priceUpgrade = document.querySelector('.data-modal__info');
+        if (!priceUpgrade.value) {
+            priceUpgrade.value = 0;
+        }
+        const id = itemId.getAttribute('data-id');
+        const token = await obtenerTokenLocalStorage();
+        await axios({
+            method: 'put',
+            headers: { Authorization: `Bearer ${token.token}` },       
+            params: { price: `${priceUpgrade.value}` } , 
+            url: `http://localhost:3000/budget/v1/accounting/${id}`,        
+            responseType: 'json'
+        }).then((success) => {
+            if (success.statusText) {
+                // console.log(success.data);
+                modalIcon.style.display = 'none';
+                // upgradeSuccess();
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            } else {
+                console.log('ERRORRRRR')
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
+    });
+
+
+}
+
+
+/// Función que cierra la vista modal
+function closeWindowModal(ev) {    
+    const sectionModal = document.querySelector('.main__modal');
+    sectionModal.style.display = 'none';
 }
