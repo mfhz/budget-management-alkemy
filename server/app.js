@@ -141,26 +141,30 @@ server.put("/budget/v1/users", validateToken, async (req, res) => {
         const userBD = await getDataBD("users", "mail", userToken);
         const userId = userBD.user_id;
         if (userBD) {
-            const { name, lastname } = req.body;
-            if (name || lastname) {
-                const userFilter = filterProps({ name, lastname });
+            const { name, lastname, password } = req.query;
+            if (name || lastname || password) {
+                const userFilter = filterProps({ name, lastname, password });
                 const updateUser = { ...userBD, ...userFilter };
                 console.log(updateUser);
                 const updateBD = await sequelize.query(
-                    "UPDATE users SET name = :updateName, lastname = :updateLastName WHERE user_id = :userId",
+                    "UPDATE users SET name = :updateName, lastname = :updateLastName, password = :updatePassword WHERE user_id = :userId",
                     {
                         replacements: {
                             updateName: updateUser.name,
                             updateLastName: updateUser.lastname,
+                            updatePassword: updateUser.password,
                             userId: userId,
                         },
                     }
                 );
-                res.status(200).send("Usuario actualizado correctamente");
+                console.log('Usuario actualizado correctamente"')
+                res.status(200).json("Usuario actualizado correctamente");
             } else {
+                console.log('Debe haber por lo menos un campo para actualizar')
                 res.status(400).send("Debe haber por lo menos un campo para actualizar");
             }
         } else {
+            console.log('El usuario ingresado no existe')
             res.status(404).json("El usuario ingresado no existe");
         }
     } catch (error) {
@@ -615,7 +619,7 @@ async function validateToken(req, res, next) {
 		const userBD = await getDataBD("users", "user_id", verification.id);
         const isDisabled = userBD.disabled;
 		if (isDisabled) {
-			res.status(401).send("Acceso denegado, la cuenta está deshabilitada");
+			res.status(401).json("Acceso denegado, la cuenta está deshabilitada");
 		} else {
 			req.tokenInfo = verification;
 			next();

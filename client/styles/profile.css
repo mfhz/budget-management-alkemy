@@ -37,12 +37,6 @@ body .main .main__profile .main__profile--restore {
 }
 
 body .main .main__profile .main__profile--restore .data {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
   width: 98px;
   height: 60px;
   background: #21C08B;
@@ -51,17 +45,19 @@ body .main .main__profile .main__profile--restore .data {
 }
 
 body .main .main__profile .main__profile--restore .data .data__update {
-  font-size: 12px;
-  color: #ffffff;
-}
-
-body .main .main__profile .main__profile--restore .password {
+  width: inherit;
+  height: inherit;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+body .main .main__profile .main__profile--restore .password {
   width: 87px;
   height: 60px;
   background: #21C08B;
@@ -70,17 +66,19 @@ body .main .main__profile .main__profile--restore .password {
 }
 
 body .main .main__profile .main__profile--restore .password .password__update {
-  font-size: 12px;
-  color: #ffffff;
-}
-
-body .main .main__profile .main__profile--restore .image {
+  width: inherit;
+  height: inherit;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 12px;
+  color: #ffffff;
+}
+
+body .main .main__profile .main__profile--restore .image {
   width: 95px;
   height: 60px;
   background: #21C08B;
@@ -89,9 +87,108 @@ body .main .main__profile .main__profile--restore .image {
 }
 
 body .main .main__profile .main__profile--restore .image .image__update {
-  width: 75px;
+  width: inherit;
+  height: inherit;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   margin: 0 auto;
   font-size: 12px;
   color: #ffffff;
+  padding: 0 10px;
+}
+
+body .main .main__data {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: red;
+  height: 100vh;
+  z-index: 2000;
+  background: rgba(34, 34, 34, 0.55);
+}
+
+body .main .main__data .main__data--update {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 400px;
+  width: 85%;
+  border: 2px  solid white;
+  border-radius: 40px;
+  padding: 30px 40px 40px;
+  color: white;
+  margin: 0 auto;
+  margin-top: 130px;
+  background: #8F57FD;
+}
+
+body .main .main__data .main__data--update .icon {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+body .main .main__data .main__data--update .icon .fa-times-circle {
+  font-size: 35px;
+}
+
+body .main .main__data .main__data--update .title {
+  margin: 30px auto;
+  text-align: center;
+}
+
+body .main .main__data .main__data--update .form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+body .main .main__data .main__data--update .form .input {
+  background: transparent;
+  color: white;
+  border-bottom: 2px solid white;
+  padding-left: 10px;
+  font-size: 14px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  outline: none;
+}
+
+body .main .main__data .main__data--update .form .input::-webkit-input-placeholder {
+  color: white;
+}
+
+body .main .main__data .main__data--update .form .input:-ms-input-placeholder {
+  color: white;
+}
+
+body .main .main__data .main__data--update .form .input::-ms-input-placeholder {
+  color: white;
+}
+
+body .main .main__data .main__data--update .form .input::placeholder {
+  color: white;
+}
+
+body .main .main__data .main__data--update .form .form__send {
+  height: 50px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 40px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  margin-top: 20px;
+  outline-style: none;
 }
 /*# sourceMappingURL=profile.css.map */

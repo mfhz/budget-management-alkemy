@@ -38,8 +38,6 @@ body {
                 margin-top: 80px;
 
                 .data {
-                    display: flex;
-                    align-items: center;
                     width: 98px;
                     height: 60px;
                     background: #21C08B;
@@ -47,14 +45,16 @@ body {
                     text-align: center;
 
                     .data__update {
+                        width: inherit;
+                        height: inherit;
+                        display: flex;
+                        align-items: center;
                         font-size: 12px;
                         color: #ffffff;
                     }
                 }
 
-                .password {
-                    display: flex;
-                    align-items: center;
+                .password {                    
                     width: 87px;
                     height: 60px;
                     background: #21C08B;
@@ -62,25 +62,99 @@ body {
                     text-align: center;
 
                     .password__update {
+                        width: inherit;
+                        height: inherit;
+                        display: flex;
+                        align-items: center;
                         font-size: 12px;
                         color: #ffffff;
                     }
                 }
 
                 .image {
-                    display: flex;
-                    align-items: center;
                     width: 95px;
                     height: 60px;
                     background: #21C08B;
                     border-radius: 5px;
-                    text-align: center;
+                    text-align: center;                    
 
                     .image__update {
-                        width: 75px;
+                        width: inherit;
+                        height: inherit;
+                        display: flex;
+                        align-items: center;
                         margin: 0 auto;
                         font-size: 12px;
                         color: #ffffff;
+                        padding: 0 10px;
+                    }
+                }
+            }
+        }
+
+        .main__data {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            background-color: red;
+            height: 100vh;
+            z-index: 2000;
+            background: rgba(34, 34, 34, 0.55);
+            
+
+            .main__data--update {
+                display: flex;
+                flex-direction: column;
+                height: 400px;
+                width: 85%;
+                border: 2px  solid white;
+                border-radius: 40px;
+                padding: 30px 40px 40px;
+                color: white;
+                margin: 0 auto;
+                margin-top: 130px;
+                background: #8F57FD;
+
+                .icon {
+                    align-self: flex-end;
+
+                    .fa-times-circle {
+                        font-size: 35px;
+                    }                    
+                }
+
+                .title {
+                    margin: 30px auto;
+                    text-align: center;
+                }
+
+                .form {
+                    display: flex;
+                    flex-direction: column;
+
+                    .input {
+                        background: transparent;
+                        color: white;
+                        border-bottom: 2px solid white;
+                        padding-left: 10px;
+                        font-size: 14px;
+                        margin-bottom: 20px;
+                        padding-bottom: 10px;
+                        outline: none;
+                        &::placeholder {
+                            color: white;
+                        }
+                    }
+
+                    .form__send {
+                        height: 50px;
+                        background-color: rgba(255, 255, 255, .1);
+                        border-radius: 40px;
+                        font-size: 16px;
+                        color: white;
+                        cursor: pointer;
+                        margin-top: 20px;
+                        outline-style: none;
                     }
                 }
             }
