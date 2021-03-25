@@ -1,15 +1,28 @@
-const home = document.querySelector('.two');
+const homeMobile = document.querySelector('.two');
+const homeDesktop = document.querySelector('.item');
 const btnData = document.querySelector('.data');
 const main = document.querySelector('.main');
 const btnPass = document.querySelector('.password');
 
 
+
+
 /**** EVENTOS ****/
 
-
-
 ///
-home.addEventListener('click', () => {
+document.addEventListener('DOMContentLoaded', () => {
+    const windowsMatch = window.matchMedia("(min-width: 1000px)");
+    if (windowsMatch.matches) {
+        homeDesktop.style.display = 'block';
+    }
+    
+});
+///
+homeMobile.addEventListener('click', () => {
+    window.location.href = 'index.html';
+});
+///
+homeDesktop.addEventListener('click', () => {
     window.location.href = 'index.html';
 });
 ///
@@ -19,8 +32,6 @@ btnPass.addEventListener('click', updateData);
 
 
 /**** FUNCIONES ****/
-
-
 
 /// Función para obtener los datos guardados en LocalStorage
 function obtenerTokenLocalStorage() {

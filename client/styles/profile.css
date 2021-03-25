@@ -191,4 +191,58 @@ body .main .main__data .main__data--update .form .form__send {
   margin-top: 20px;
   outline-style: none;
 }
+
+@media screen and (min-width: 1000px) {
+  body .header .header__menu .header__menu--list .item .home .fas {
+    display: block;
+    font-size: 45px;
+  }
+  body .main__profile .main__profile--text .name {
+    font-size: 30px !important;
+  }
+  body .main__profile .main__profile--text .question {
+    font-size: 25px;
+  }
+  body .main__profile .main__profile--restore .data {
+    width: 175px !important;
+    cursor: pointer;
+  }
+  body .main__profile .main__profile--restore .data .data__update {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    font-size: 1em !important;
+  }
+  body .main__profile .main__profile--restore .password {
+    width: 175px !important;
+    cursor: pointer;
+  }
+  body .main__profile .main__profile--restore .password .password__update {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    font-size: 1em !important;
+  }
+  body .main__profile .main__profile--restore .image {
+    width: 175px !important;
+    cursor: pointer;
+  }
+  body .main__profile .main__profile--restore .image .image__update {
+    -webkit-box-pack: center !important;
+        -ms-flex-pack: center !important;
+            justify-content: center !important;
+    font-size: 1em !important;
+  }
+  body .main__data .main__data--update {
+    width: 70% !important;
+  }
+  body .main__data .main__data--update .icon {
+    cursor: pointer;
+  }
+  body .main__data .main__data--update .form {
+    width: 450px;
+    margin: 0 auto;
+    margin-top: 30px;
+  }
+}
 /*# sourceMappingURL=profile.css.map */

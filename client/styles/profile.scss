@@ -162,3 +162,94 @@ body {
     }
     
 }
+
+
+@media screen and (min-width: 1000px) {
+
+    body {
+
+        .header {
+
+            .header__menu {
+
+                .header__menu--list {
+
+                    .item {
+
+                        .home {
+
+                            .fas {
+                                display: block;
+                                font-size: 45px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .main__profile {
+
+            .main__profile--text {
+
+                .name {
+                    font-size: 30px !important;
+                }
+
+                .question {
+                    font-size: 25px;
+                }
+            }
+
+            .main__profile--restore {
+
+                .data {
+                    width: 175px !important;
+                    cursor: pointer;
+
+                    .data__update {
+                        justify-content: center !important;
+                        font-size: 1em !important;
+                    }
+                }
+
+                .password {
+                    width: 175px !important;
+                    cursor: pointer;
+
+                    .password__update {
+                        justify-content: center !important;
+                        font-size: 1em !important;
+                    }
+                }
+
+                .image {     
+                    width: 175px !important;         
+                    cursor: pointer;  
+
+                    .image__update {
+                        justify-content: center !important;
+                        font-size: 1em !important;
+                    }
+                }
+            }
+        }
+
+        .main__data {            
+
+            .main__data--update {
+                width: 70% !important;
+
+                .icon {
+                    cursor: pointer;                  
+                }
+
+                .form {
+                    width: 450px;
+                    margin: 0 auto;
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}
