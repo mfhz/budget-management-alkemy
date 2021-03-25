@@ -1,9 +1,11 @@
 /**** VARIABLES GLOBALES ****/
 const containerRegisters = document.querySelector('.items-register');
 const containerMenu = document.querySelector('.menu');
-let mobile = window.matchMedia("(min-width: 1000px)");
+// let mobile = window.matchMedia("(min-width: 1000px)");
 const containerButton = document.querySelector('.two');
 const header = document.querySelector('.header__menu');
+const incomeDesktop = document.querySelector('.button-incomes__text');
+const expenseDesktop = document.querySelector('.button-expenses__text');
 
 
 
@@ -51,10 +53,13 @@ async function getRegistersBD(e) {
         login();
     }
 }
+/// Crea ingreso o egreso para versión mobile
+containerButton.addEventListener('click', optionsRegisterMobile);
 ///
-if (!mobile.matches) {
-    containerButton.addEventListener('click', optionsRegister);
-}
+incomeDesktop.addEventListener('click', optionsRegisterIncome);
+///
+expenseDesktop.addEventListener('click', optionsRegisterExpense);
+
 
 
 
@@ -333,7 +338,8 @@ function closeWindowModal(ev) {
 }
 
 
-function optionsRegister() {
+/// Función para agregar un ingreso o egreso en versión Mobile
+function optionsRegisterMobile() {
 
     const buttonPrincipal = document.querySelector('.item-two')
     const optionsContainer = document.createElement('div');
@@ -372,11 +378,25 @@ function optionsRegister() {
 }
 
 
+/// Función que redirecciona a la página de Ingresos Mobile
 function registerNewIncome() {
     window.location.href = 'incomes.html';
 }
 
 
+/// Función que redirecciona a la página de Egresos
 function registerNewExpense() {
+    window.location.href = 'expenses.html';
+}
+
+
+/// Función que redirecciona a la página de Ingresos Desktop
+function optionsRegisterIncome() {
+    window.location.href = 'incomes.html';
+}
+
+
+/// Función que redirecciona a la página de Egresos Desktop
+function optionsRegisterExpense() {
     window.location.href = 'expenses.html';
 }

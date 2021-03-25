@@ -1,5 +1,6 @@
 const buttonContainer = document.querySelector('.two');
 const buttonRegister = document.querySelector('.button');
+const iconClose = document.querySelector('.registro__container--icon');
 
 
 
@@ -9,11 +10,15 @@ const buttonRegister = document.querySelector('.button');
 document.addEventListener('DOMContentLoaded', () => {
     const iconButton = document.querySelector('.fa-plus');
     iconButton.classList.add('fa-times');
+    iconClose.style.display = 'block';
 })
-/// Al presionar al boton cancela el registro y redirecciona al home
-buttonContainer.addEventListener('click', cancelRegister);
+/// Al presionar al boton cancela el registro y redirecciona al home versión Mobile
+buttonContainer.addEventListener('click', cancelRegisterMobile);
 /// Envía la petición del nuevo registro a la BD
 buttonRegister.addEventListener('click', sendNewRegister);
+/// Al presionar al boton cancela el registro y redirecciona al home versión Desktop
+iconClose.addEventListener('click', cancelRegisterDesktop);
+
 
 
 
@@ -24,8 +29,14 @@ buttonRegister.addEventListener('click', sendNewRegister);
 
 /***** FUNCIONES *****/
 
+/// Función que redirecciona a página de inicio versión Mobile
+function cancelRegisterMobile() {
+    window.location.href = 'index.html';
+}
 
-function cancelRegister() {
+
+/// Función que redirecciona a página de inicio versión Desktop
+function cancelRegisterDesktop() {
     window.location.href = 'index.html';
 }
 
@@ -60,6 +71,7 @@ function guardarLS(user) {
 }
 
 
+/// Funcion que realiza la peticion y envia los registros a la BD
 async function sendNewRegister(e) {
     e.preventDefault();
 

@@ -1,3 +1,90 @@
 body {
+
+    .main {
+
+        .main__profile {
+
+            .main__profile--img {
+                width: 120px;
+                height: 120px;
+                margin: 0 auto;
+                margin-top: 35px;
+
+                .my-image {
+                    width: inherit;
+                    height: inherit;
+                    border-radius: 50%;
+                }
+            }
+
+            .main__profile--text {
+                text-align: center;
+                margin: 20px 0;
+
+                .name {
+                    font-size: 18px;
+                    margin-bottom: 5px;
+                    color: #ffffff;
+                }
+
+                .question {
+                    color: #ffffff;
+                }
+            }
+
+            .main__profile--restore {
+                display: flex;
+                justify-content: space-evenly;
+                margin-top: 80px;
+
+                .data {
+                    display: flex;
+                    align-items: center;
+                    width: 98px;
+                    height: 60px;
+                    background: #21C08B;
+                    border-radius: 5px;
+                    text-align: center;
+
+                    .data__update {
+                        font-size: 12px;
+                        color: #ffffff;
+                    }
+                }
+
+                .password {
+                    display: flex;
+                    align-items: center;
+                    width: 87px;
+                    height: 60px;
+                    background: #21C08B;
+                    border-radius: 5px;
+                    text-align: center;
+
+                    .password__update {
+                        font-size: 12px;
+                        color: #ffffff;
+                    }
+                }
+
+                .image {
+                    display: flex;
+                    align-items: center;
+                    width: 95px;
+                    height: 60px;
+                    background: #21C08B;
+                    border-radius: 5px;
+                    text-align: center;
+
+                    .image__update {
+                        width: 75px;
+                        margin: 0 auto;
+                        font-size: 12px;
+                        color: #ffffff;
+                    }
+                }
+            }
+        }
+    }
     
 }

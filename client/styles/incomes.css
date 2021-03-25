@@ -85,4 +85,39 @@ body main .registro .registro__container .registro__container--form .button {
   cursor: pointer;
   margin-top: 20px;
 }
+
+@media screen and (min-width: 1000px) {
+  body main {
+    margin-top: 50px;
+  }
+  body main .registro .registro__container {
+    width: 600px;
+  }
+  body main .registro .registro__container .registro__container--icon {
+    width: 36px;
+    position: relative;
+    left: 450px;
+    top: -15px;
+    cursor: pointer;
+  }
+  body main .registro .registro__container .registro__container--icon .fa-times-circle {
+    font-size: 35px;
+  }
+  body main .registro .registro__container .registro__container--title {
+    font-size: 30px;
+    margin: 0 auto;
+    margin-bottom: 70px;
+  }
+  body main .registro .registro__container .registro__container--form .input {
+    font-size: 18px;
+    width: 400px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+  body main .registro .registro__container .registro__container--form .button {
+    width: 350px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+}
 /*# sourceMappingURL=incomes.css.map */

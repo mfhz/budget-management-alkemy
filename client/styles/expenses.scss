@@ -64,3 +64,46 @@ body {
         }
     }
 }
+
+
+@media screen and (min-width: 1000px) {
+
+    body {
+        main {
+            margin-top: 50px;
+    
+            .registro {
+        
+                .registro__container {
+                    width: 600px;
+
+                    .registro__container--icon {
+                        
+                    }
+    
+                    .registro__container--title {
+                        font-size: 30px;
+                        margin: 0 auto;
+                        margin-bottom: 70px;
+                    }
+        
+                    .registro__container--form {
+                        
+                        .input {
+                            font-size: 18px;
+                            width: 400px;
+                            margin: 0 auto;
+                            margin-bottom: 30px;
+                        }
+        
+                        .button {
+                            width: 350px;
+                            margin: 0 auto;
+                            margin-top: 50px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
