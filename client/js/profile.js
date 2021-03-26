@@ -16,14 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
         homeDesktop.style.display = 'block';
     }
     
+    const token = leerLocalStorage();
+    if (token.token =! 0) {
+        window.location.href = 'index.html';
+    }
 });
 ///
 homeMobile.addEventListener('click', () => {
-    window.location.href = 'index.html';
+    window.location.href = 'home.html';
 });
 ///
 homeDesktop.addEventListener('click', () => {
-    window.location.href = 'index.html';
+    window.location.href = 'home.html';
 });
 ///
 btnData.addEventListener('click', updateData);
@@ -32,6 +36,14 @@ btnPass.addEventListener('click', updateData);
 
 
 /**** FUNCIONES ****/
+
+/// Funcion para leer el localStorage una vez iniciada la aplicación
+function leerLocalStorage () {
+    let tokenUser;
+    tokenUser = obtenerTokenLocalStorage();
+    return tokenUser;
+}
+
 
 /// Función para obtener los datos guardados en LocalStorage
 function obtenerTokenLocalStorage() {
@@ -59,7 +71,7 @@ function guardarLS(user) {
 /// Función que redirecciona a la página de Login cuando el token esté vencido
 function login() {
     location.reload();        
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 
 

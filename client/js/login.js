@@ -14,7 +14,7 @@ async function succesLogin(e) {
     }).then((success) => {
         if (success.statusText) {
             guardarLocalStorage(success.data.token, success.data.userId);
-            window.location.href = 'index.html';
+            window.location.href = 'home.html';
         } else {
             
         }

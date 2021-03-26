@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles/index.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <header class="header">
+        <div class="header__profile">
+            <img class="header__profile--img" src="./assets/IMAGE.jpeg" alt="profile">
+        </div>
+        <div class="header__welcome">
+            <p class="header__welcome--text">Bienvenido Martín</p>
+        </div>
+        <nav class="header__menu">
+            <ul class="header__menu--list">
+                <li class="item">
+                    <div class="item__container home">
+                        <i class="fas fa-home"></i>
+                        <p class="item__container--text">Home</p>
+                    </div>
+                </li>
+                <li class="item item-two">
+                    <div class="item__container two">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </li>
+                <li class="item">
+                    <div class="item__container my-profile">
+                        <i class="fas fa-house-user"></i>
+                        <p class="item__container--text">Profile</p>
+                    </div>
+                </li>    
+            </ul>
+        </nav>
+    </header>
+    <main class="main">
+        <section class="main__balance">
+            <div class="main__balance--complete">
+                <h1 class="title-balance">Saldo en la cuenta</h1>
+                <p class="text-balance">$ 0, 00</p>
+            </div>            
+            <div class="main__balance--actions">
+                <div class="incomes">
+                    <div class="incomes__container">
+                        <div class="incomes__container--button">
+                            <i class="fas fa-arrow-up"></i>
+                        </div>
+                        <div class="incomes__container--text">
+                            <h4 class="incomes-title">Ingresos</h4>
+                            <p class="incomes-value">$ 0, 00</p>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="expenses">
+                    <div class="expenses__container">
+                        <div class="expenses__container--button">
+                            <i class="fas fa-arrow-down"></i>
+                        </div>
+                        <div class="expenses__container--text">
+                            <h4 class="expenses-title">Egresos</h4>
+                            <p class="expenses-value">$ 0, 00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="main__registers">
+            <div class="main__registers--title">
+                <h2 class="actions-title">Tus Movimientos</h2>
+            </div>
+            <div class="main__registers--buttons">
+                <div class="button-export">
+                    <p class="button-export__text">Exportar registros</p>
+                </div>
+                <div class="button-incomes">
+                    <p class="button-incomes__text">Agregar Ingreso</p>
+                </div>
+                <div class="button-expenses">
+                    <p class="button-expenses__text">Agregar Egreso</p>
+                </div>
+            </div>
+            <div class="main__registers--container">
+                <div class="menu"">
+                    <div class="menu__container">
+                        <p class="menu__container--title">Concepto</p>
+                        <div class="menu__container--icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                    </div>
+                    <div  class="menu__container">
+                        <p class="menu__container--title">Monto</p>
+                        <div class="menu__container--icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                    </div>
+                    <div  class="menu__container">
+                        <p class="menu__container--title">Fecha</p>
+                        <div class="menu__container--icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                    </div>
+                    <div  class="menu__container">
+                        <p class="menu__container--title">Tipo</p>
+                        <div class="menu__container--icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                    </div>
+                    <div class="menu__container">
+                        <p class="menu__container--title">Acción</p>
+                    </div>                
+                </div>
+                <div class="items-register">
+                </div>               
+            </div>
+        </section>
+    </main>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="./js/index.js"></script>
+</html>

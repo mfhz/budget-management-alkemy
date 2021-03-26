@@ -93,6 +93,16 @@ body main .registro .registro__container .registro__container--form .button {
   body main .registro .registro__container {
     width: 600px;
   }
+  body main .registro .registro__container .registro__container--icon {
+    width: 36px;
+    position: relative;
+    left: 450px;
+    top: -15px;
+    cursor: pointer;
+  }
+  body main .registro .registro__container .registro__container--icon .fa-times-circle {
+    font-size: 35px;
+  }
   body main .registro .registro__container .registro__container--title {
     font-size: 30px;
     margin: 0 auto;

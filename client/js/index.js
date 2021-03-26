@@ -1,7 +1,7 @@
 /**** VARIABLES GLOBALES ****/
 const containerRegisters = document.querySelector('.items-register');
 const containerMenu = document.querySelector('.menu');
-// let mobile = window.matchMedia("(min-width: 1000px)");
+// let desktop = window.matchMedia("(min-width: 1000px)");
 const containerButton = document.querySelector('.two');
 const header = document.querySelector('.header__menu');
 const incomeDesktop = document.querySelector('.button-incomes__text');
@@ -24,6 +24,19 @@ profile.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', leerLocalStorage);
 /// Al cargar la página obtener registros de la BD
 document.addEventListener('DOMContentLoaded', getRegistersBD);
+/// Crea ingreso o egreso para versión mobile
+containerButton.addEventListener('click', optionsRegisterMobile);
+///
+incomeDesktop.addEventListener('click', optionsRegisterIncome);
+///
+expenseDesktop.addEventListener('click', optionsRegisterExpense);
+
+
+
+
+/**** FUNCIONES ****/
+
+
 /// Obtener e imprimir los resgistros realizados por el usuario
 async function getRegistersBD(e) {
     e.preventDefault();
@@ -53,17 +66,6 @@ async function getRegistersBD(e) {
         login();
     }
 }
-/// Crea ingreso o egreso para versión mobile
-containerButton.addEventListener('click', optionsRegisterMobile);
-///
-incomeDesktop.addEventListener('click', optionsRegisterIncome);
-///
-expenseDesktop.addEventListener('click', optionsRegisterExpense);
-
-
-
-
-/**** FUNCIONES ****/
 
 
 /// Funcion para leer el localStorage una vez iniciada la aplicación
@@ -151,12 +153,12 @@ function printContentRegisters(data) {
 
 /// Función que imprime la vista Default donde no hay registros
 function printDefaulRegister() {
-    const buttons = document.querySelector('.main__registers--buttons');
+    const btnExport = document.querySelector('.button-export');
     const mainTitle = document.querySelector('.main__registers--title');
 
 
     containerMenu.style.display = 'none';
-    buttons.style.display = 'none';
+    btnExport.style.display = 'none';
     mainTitle.style.marginBottom = '5vw'
 
 
@@ -185,7 +187,7 @@ function printDefaulRegister() {
 /// Función que redirecciona a la página de Login cuando el token esté vencido
 function login() {
     location.reload();        
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 
 

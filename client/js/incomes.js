@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const iconButton = document.querySelector('.fa-plus');
     iconButton.classList.add('fa-times');
     iconClose.style.display = 'block';
+    const token = leerLocalStorage();
+    if (token.token =! 0) {
+        window.location.href = 'index.html';
+    }
 })
 /// Al presionar al boton cancela el registro y redirecciona al home versión Mobile
 buttonContainer.addEventListener('click', cancelRegisterMobile);
@@ -29,15 +33,24 @@ iconClose.addEventListener('click', cancelRegisterDesktop);
 
 /***** FUNCIONES *****/
 
+
+/// Funcion para leer el localStorage una vez iniciada la aplicación
+function leerLocalStorage () {
+    let tokenUser;
+    tokenUser = obtenerTokenLocalStorage();
+    return tokenUser;
+}
+
+
 /// Función que redirecciona a página de inicio versión Mobile
 function cancelRegisterMobile() {
-    window.location.href = 'index.html';
+    window.location.href = 'home.html';
 }
 
 
 /// Función que redirecciona a página de inicio versión Desktop
 function cancelRegisterDesktop() {
-    window.location.href = 'index.html';
+    window.location.href = 'home.html';
 }
 
 
@@ -58,7 +71,7 @@ function obtenerTokenLocalStorage() {
 /// Función que redirecciona a la página de Login cuando el token esté vencido
 function login() {
     location.reload();        
-    window.location.href = 'login.html';
+    window.location.href = 'index.html';
 }
 
 
@@ -94,7 +107,7 @@ async function sendNewRegister(e) {
             if (success.statusText) {
                 console.log(success.data);
                 setTimeout(() => {
-                    window.location.href = 'index.html';
+                    window.location.href = 'home.html';
                 }, 2000);
             } else {
                 console.log('ERRORRRRR')
