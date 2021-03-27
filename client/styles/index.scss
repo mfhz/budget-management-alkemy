@@ -406,11 +406,11 @@ body {
 
         .main__modal {
             width: 100%;
-            height: 100vh;
             position: absolute;
             top: 0;
             z-index: 400;
             background: rgba(143,87,253, 1);
+            height: 5000px;
 
             .main__modal--container {
                 width: 100%;
@@ -897,6 +897,18 @@ body {
                     }
                 }
     
+            }
+
+            .main__modalDelete {
+    
+                .main__modalDelete--container {
+                    width: 500px;
+                    height: 350px;
+    
+                    .title-modal {
+                        margin: 50px auto;
+                    }
+                }
             }
         }
     }

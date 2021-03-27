@@ -50,7 +50,6 @@ async function getRegistersBD(e) {
         }).then((success) => {
             if (success.statusText) {
                 if (success.data.length) {
-                    // console.log(success.data);
                     printContentRegisters(success.data);      
                     printBalance(success.data);      
                 } else {
@@ -257,7 +256,7 @@ function modalEdit(ev) {
 /// Función que muestra un modal para actualizar el valor del registro y una vez realiado en 2segundos lo manda al home
 function updateAmount(ev) {
     const itemId = ev.target.parentElement.parentElement.parentElement.children[4];
-    // console.log(itemId.getAttribute('data-id'));
+    const body = document.getElementsByTagName('body');
 
     const main = document.querySelector('.main');
     const sectionModal = document.createElement('section');
@@ -274,6 +273,8 @@ function updateAmount(ev) {
         // console.log(containerModal.children[2]);
         containerModal.removeChild(containerModal.children[2]);
     }  
+
+    body[0].style.overflow = 'hidden';
 
     sectionModal.classList.add('main__modal');
     containerModal.classList.add('main__modal--container');
@@ -417,6 +418,8 @@ function deleteRegister(ev) {
 /// Función que cierra la vista modal
 function closeWindowModal() {    
     const sectionModal = document.querySelector('.main__modal');
+    const body = document.getElementsByTagName('body');
+    body[0].style.overflow = 'unset';
     sectionModal.style.display = 'none';
 }
 

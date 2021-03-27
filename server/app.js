@@ -33,6 +33,8 @@ server.use(cors());
 /**** Endpoint al hacer login entrega token  ****/
 server.get("/budget/v1/users/login", async (req, res) => {
     const { email, pass } = req.query;
+    console.log(email);
+    console.log(pass);
 	try {
         const emailBD = await getDataBD("users", "mail", email);
         if (email && pass) {
@@ -273,6 +275,7 @@ server.delete("/budget/v1/users/:useremail", validateToken, async (req, res) => 
 server.get("/budget/v1/accounting", validateToken, async (req, res) => {
     const admin = req.tokenInfo.isAdmin;
     const userId = req.tokenInfo.id;
+    let array = [];
     try {
         let filteraccounting = [];
         if (admin) {
@@ -282,12 +285,19 @@ server.get("/budget/v1/accounting", validateToken, async (req, res) => {
             });
         } else {
             const accountingTypeBD = await getDataBD("accounting", "user_id", userId, true);
+            // filteraccounting = accountingTypeBD.map((account) => {
+            //     delete account.disabled;
+            //     return account;
+            // });
             filteraccounting = accountingTypeBD.map((account) => {
-                delete account.disabled;
-                return account;
+                if (account.disabled != 1) {
+                    delete account.disabled;
+                    array.push(account);
+                    return array;
+                }
             });
-        }        
-        res.status(200).json(filteraccounting);
+        }
+        res.status(200).json(array);
 
     } catch (error) {
         res.status(500).send("Ah ocurrido un error...." + error);
@@ -421,7 +431,8 @@ server.delete("/budget/v1/accounting/:id", validateToken, async (req, res) => {
                     id: accountingID,
                 },
             });
-            res.status(200).send(`El registro con ID ${accountingID} se deshabilitó correctamente`);
+            console.log(`El registro con ID ${accountingID} se deshabilitó correctamente`)
+            res.status(200).json(`El registro con ID ${accountingID} se deshabilitó correctamente`);
         } else {
             res.status(404).send(`El registro con ID ${accountingID} no existe`);
         }
