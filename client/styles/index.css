@@ -37,7 +37,7 @@ body .header .header__welcome {
 }
 
 body .header .header__menu {
-  height: 15.625vw;
+  height: 59px;
   width: 100%;
   position: fixed;
   bottom: 0;
@@ -72,13 +72,13 @@ body .header .header__menu .header__menu--list .item .item__container .item__con
 }
 
 body .header .header__menu .header__menu--list .item .item__container .fas {
-  font-size: 6.2vw;
+  font-size: 23.25px;
   color: #ffffff;
 }
 
 body .header .header__menu .header__menu--list .item .two {
-  width: 15.625vw;
-  height: 15.625vw;
+  width: 59px;
+  height: 59px;
   border: 1px solid #21C08B;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -166,12 +166,12 @@ body .main .main__balance .main__balance--complete {
 
 body .main .main__balance .main__balance--complete .title-balance {
   color: #ffffff;
-  font-size: 7.8125vw;
+  font-size: 30px;
 }
 
 body .main .main__balance .main__balance--complete .text-balance {
   color: #ffffff;
-  font-size: 6.25vw;
+  font-size: 23.5px;
   margin-top: 15px;
 }
 
@@ -193,8 +193,8 @@ body .main .main__balance .main__balance--actions .incomes .incomes__container {
 }
 
 body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--button {
-  width: 15.625vw;
-  height: 15.625vw;
+  width: 59px;
+  height: 59px;
   background-color: #21C08B;
   border-radius: 50%;
   display: -webkit-box;
@@ -211,18 +211,18 @@ body .main .main__balance .main__balance--actions .incomes .incomes__container .
 
 body .main .main__balance .main__balance--actions .incomes .incomes__container .incomes__container--button .fa-arrow-up {
   color: #ffffff;
-  font-size: 4.375vw;
+  font-size: 16.5px;
 }
 
 body .main .main__balance .main__balance--actions .incomes .incomes__container--text .incomes-title {
   color: #ffffff;
-  font-size: 5vw;
+  font-size: 19px;
 }
 
 body .main .main__balance .main__balance--actions .incomes .incomes__container--text .incomes-value {
   color: #21C08B;
   font-weight: bold;
-  font-size: 5.625vw;
+  font-size: 21px;
 }
 
 body .main .main__balance .main__balance--actions .expenses .expenses__container {
@@ -232,8 +232,8 @@ body .main .main__balance .main__balance--actions .expenses .expenses__container
 }
 
 body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--button {
-  width: 15.625vw;
-  height: 15.625vw;
+  width: 59px;
+  height: 59px;
   background-color: #F12972;
   border-radius: 50%;
   display: -webkit-box;
@@ -250,18 +250,18 @@ body .main .main__balance .main__balance--actions .expenses .expenses__container
 
 body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--button .fa-arrow-down {
   color: #ffffff;
-  font-size: 4.375vw;
+  font-size: 16.5px;
 }
 
 body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--text .expenses-title {
   color: #ffffff;
-  font-size: 5vw;
+  font-size: 19px;
 }
 
 body .main .main__balance .main__balance--actions .expenses .expenses__container .expenses__container--text .expenses-value {
   color: #F12972;
   font-weight: bold;
-  font-size: 5.625vw;
+  font-size: 21px;
 }
 
 body .main .main__registers {
@@ -431,6 +431,7 @@ body .main .main__registers .main__registers--container .items-register .registe
   top: 65%;
   left: 75%;
   background: #ffffff;
+  z-index: 300;
 }
 
 body .main .main__registers .main__registers--container .items-register .register-edit .register-modal .register-modal__menu {
@@ -537,6 +538,70 @@ body .main .main__modal .main__modal--container .button-modal {
   background: #21C08B;
   color: #ffffff;
   cursor: pointer;
+}
+
+body .main .main__modalDelete {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 400;
+  background: rgba(34, 34, 34, 0.75);
+  padding-top: 168.75px;
+  height: 5000px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+body .main .main__modalDelete .main__modalDelete--container {
+  width: 300px;
+  height: 400px;
+  border-radius: 25px;
+  border: 1px solid #ffffff;
+  background: #8f57fd;
+  padding-top: 56.25px;
+  position: fixed;
+}
+
+body .main .main__modalDelete .main__modalDelete--container .title-modal {
+  width: 80%;
+  color: #ffffff;
+  margin: 30px auto;
+  text-align: center;
+}
+
+body .main .main__modalDelete .main__modalDelete--container .container-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+body .main .main__modalDelete .main__modalDelete--container .container-buttons .container-buttons__true {
+  width: 45%;
+  line-height: 40px;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-radius: 20px;
+  background: #21C08B;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+body .main .main__modalDelete .main__modalDelete--container .container-buttons .container-buttons__false {
+  width: 45%;
+  line-height: 40px;
+  margin: 0 auto;
+  margin-top: 30px;
+  border-radius: 20px;
+  background: #F12972;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 700px) {
+  body .main .main__balance .main__balance--actions {
+    padding: 0 15%;
+  }
 }
 
 @media screen and (min-width: 1000px) {

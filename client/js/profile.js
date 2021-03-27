@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     const token = leerLocalStorage();
-    if (token.token =! 0) {
+    if (token.token == 0) {
         window.location.href = 'index.html';
     }
 });

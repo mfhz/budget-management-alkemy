@@ -224,6 +224,7 @@ function modalEdit(ev) {
     const modal = document.createElement('div');
     const listContainer = document.createElement('ul');
     const listModal = document.createElement('li');
+    const listModalDelete = document.createElement('li');
 
     if (container.classList.contains('register-edit')) {
         iconOptions.classList.remove('fa-times');
@@ -236,14 +237,18 @@ function modalEdit(ev) {
         listContainer.classList.add('register-modal__menu');
         listModal.classList.add('register-modal__menu--list');
         listModal.textContent = 'Editar';
+        listModalDelete.classList.add('register-modal__menu--list');
+        listModalDelete.textContent = 'Eliminar';
         iconOptions.classList.add('fa-times');
 
 
         container.appendChild(modal);
         modal.appendChild(listContainer);
         listContainer.appendChild(listModal);
+        listContainer.appendChild(listModalDelete);
 
         listModal.addEventListener('click', updateAmount);
+        listModalDelete.addEventListener('click', deleteRegister);
     }
     
 }
@@ -333,10 +338,95 @@ function updateAmount(ev) {
 }
 
 
+///
+function deleteRegister(ev) {
+    const itemId = ev.target.parentElement.parentElement.parentElement.children[4];
+    const body = document.getElementsByTagName('body');
+
+    const main = document.querySelector('.main');
+    const sectionModal = document.createElement('section');
+    const containerModal = document.createElement('div');
+    const modalTitle = document.createElement('h3');
+    const modalContainerText = document.createElement('div');
+    const buttonTrue = document.createElement('input');
+    const buttonFalse = document.createElement('input');
+
+    console.log(ev.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[2]);
+    if (ev.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[2]) {
+        const containerModal = document.querySelector('.main');
+        // console.log(containerModal.children[2]);
+        containerModal.removeChild(containerModal.children[2]);
+    }
+
+    body[0].style.overflow = 'hidden';
+
+    sectionModal.classList.add('main__modalDelete');
+    containerModal.classList.add('main__modalDelete--container');
+
+    modalTitle.textContent = '¿Estas seguro que quieres eliminar este registro?';
+    modalTitle.classList.add('title-modal');
+
+    modalContainerText.classList.add('container-buttons')
+
+    buttonTrue.classList.add('container-buttons__true');
+    buttonTrue.setAttribute('type', 'button');
+    buttonTrue.setAttribute('value', 'SI');
+
+    buttonFalse.classList.add('container-buttons__false');
+    buttonFalse.setAttribute('type', 'button');
+    buttonFalse.setAttribute('value', 'NO');
+
+    sectionModal.style.display = 'flex';
+
+    main.appendChild(sectionModal);
+    sectionModal.appendChild(containerModal);
+    containerModal.appendChild(modalTitle);
+    containerModal.appendChild(modalContainerText);
+    modalContainerText.appendChild(buttonTrue);
+    modalContainerText.appendChild(buttonFalse);
+
+
+    buttonFalse.addEventListener('click', closeWindowModalDelete);
+    buttonTrue.addEventListener('click', async (ev) => {
+        ev.preventDefault();
+        const id = itemId.getAttribute('data-id');
+        const token = await obtenerTokenLocalStorage();
+        await axios({
+            method: 'delete',
+            headers: { Authorization: `Bearer ${token.token}` },
+            url: `http://localhost:3000/budget/v1/accounting/${id}`,        
+            responseType: 'json'
+        }).then((success) => {
+            if (success.statusText) {
+                console.log(success);
+                // upgradeSuccess();
+                setTimeout(() => {
+                    location.reload();
+                }, 2000);
+            } else {
+                console.log('ERRORRRRR')
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
+    });
+
+}
+
+
 /// Función que cierra la vista modal
-function closeWindowModal(ev) {    
+function closeWindowModal() {    
     const sectionModal = document.querySelector('.main__modal');
     sectionModal.style.display = 'none';
+}
+
+
+/// Función que cierra la vista modal
+function closeWindowModalDelete() {    
+    const sectionModal = document.querySelector('.main__modalDelete');
+    const body = document.getElementsByTagName('body');
+    sectionModal.style.display = 'none';
+    body[0].style.overflow = 'unset';
 }
 
 

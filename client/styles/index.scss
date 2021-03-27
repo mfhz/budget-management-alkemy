@@ -32,7 +32,7 @@ body {
         }
 
         .header__menu {
-            height: 15.625vw;
+            height: 59px;
             width: 100%;        
             // border: 1px solid #000000;
             position: fixed;
@@ -59,14 +59,14 @@ body {
                         }
 
                         .fas {
-                            font-size: 6.2vw;
+                            font-size: 23.25px;
                             color: #ffffff;
                         }
                     }
 
                     .two {
-                        width: 15.625vw;
-                        height: 15.625vw;
+                        width: 59px;
+                        height: 59px;
                         border: 1px solid #21C08B;
                         display: flex;
                         justify-content: center;
@@ -142,13 +142,13 @@ body {
 
                 .title-balance {
                     color: #ffffff;
-                    font-size: 7.8125vw;
+                    font-size: 30px;
 
                 }
 
                 .text-balance {
                     color: #ffffff;
-                    font-size: 6.25vw;
+                    font-size: 23.5px;
                     margin-top: 15px;
                 }
             }
@@ -165,8 +165,8 @@ body {
                         display: flex;
 
                         .incomes__container--button {
-                            width: 15.625vw;
-                            height: 15.625vw;
+                            width: 59px;
+                            height: 59px;
                             background-color: #21C08B;
                             border-radius: 50%;
                             display: flex;
@@ -176,7 +176,7 @@ body {
                         
                             .fa-arrow-up {
                                 color: #ffffff;
-                                font-size: 4.375vw;
+                                font-size: 16.5px;
                             }
                         }
                     }
@@ -185,13 +185,13 @@ body {
 
                         .incomes-title {
                             color: #ffffff;
-                            font-size: 5vw;
+                            font-size: 19px;
                         }
 
                         .incomes-value {
                             color: #21C08B;
                             font-weight: bold;
-                            font-size: 5.625vw;
+                            font-size: 21px;
                         }
                     }
                 }
@@ -202,8 +202,8 @@ body {
                         display: flex;                        
 
                         .expenses__container--button {
-                            width: 15.625vw;
-                            height: 15.625vw;
+                            width: 59px;
+                            height: 59px;
                             background-color: #F12972;
                             border-radius: 50%;
                             display: flex;
@@ -213,7 +213,7 @@ body {
 
                             .fa-arrow-down {
                                 color: #ffffff;
-                                font-size: 4.375vw;
+                                font-size: 16.5px;
                             }
                         }
 
@@ -221,13 +221,13 @@ body {
 
                             .expenses-title {
                                 color: #ffffff;
-                                font-size: 5vw;
+                                font-size: 19px;
                             }
 
                             .expenses-value {
                                 color: #F12972;
                                 font-weight: bold;
-                                font-size: 5.625vw;
+                                font-size: 21px;
                             }
 
                         }
@@ -383,6 +383,7 @@ body {
                             top: 65%;
                             left: 75%;
                             background: #ffffff;
+                            z-index: 300;
 
                             .register-modal__menu {
                                 text-align: center;
@@ -475,10 +476,79 @@ body {
 
         }
 
+        .main__modalDelete {
+            width: 100%;
+            position: absolute;
+            top: 0;
+            z-index: 400;
+            background: rgba(34, 34, 34, 0.75);
+            padding-top: 168.75px;
+            height: 5000px;
+            justify-content: center;
+
+            .main__modalDelete--container {
+                width: 300px;
+                height: 400px;
+                border-radius: 25px;
+                border: 1px solid #ffffff;                
+                background: rgb(143,87,253);
+                padding-top: 56.25px;
+                position: fixed;
+
+                .title-modal {
+                    width: 80%;
+                    color: #ffffff;
+                    margin: 30px auto;
+                    text-align: center;
+                }
+
+                .container-buttons {
+                    display: flex;
+
+                    .container-buttons__true {
+                        width: 45%;
+                        line-height: 40px;
+                        margin: 0 auto;
+                        margin-top: 30px;
+                        border-radius: 20px;
+                        background: #21C08B;
+                        color: #ffffff;
+                        cursor: pointer;
+                    }
+
+                    .container-buttons__false{
+                        width: 45%;
+                        line-height: 40px;
+                        margin: 0 auto;
+                        margin-top: 30px;
+                        border-radius: 20px;
+                        background: #F12972;
+                        color: #ffffff;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+
         
     }
 }
-//99
+
+@media screen and (min-width: 700px) {
+
+    body {
+
+        .main {
+
+            .main__balance {
+    
+                .main__balance--actions {
+                    padding: 0 15%;
+                }
+            }
+        }
+    }
+}
 
 @media screen and (min-width: 1000px) {
 

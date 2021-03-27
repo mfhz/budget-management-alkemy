@@ -413,22 +413,17 @@ server.put("/budget/v1/accounting/:id", validateToken, async (req, res) => {
 /**** Endpoint para eliminar los registros por su ID ****/
 server.delete("/budget/v1/accounting/:id", validateToken, async (req, res) => {
     const accountingID = req.params.id;
-    const admin = req.tokenInfo.isAdmin;
 	try {
-		if (admin) {
-            const accountingTypeBD = await getDataBD("accounting", "accounting_id", accountingID, true);
-            if (accountingTypeBD) {
-                const update = await sequelize.query("UPDATE accounting SET disabled = true WHERE accounting_id = :id", {
-                    replacements: {
-                        id: accountingID,
-                    },
-                });
-                res.status(200).send(`El registro con ID ${accountingID} se deshabilitó correctamente`);
-            } else {
-                res.status(404).send(`El registro con ID ${accountingID} no existe`);
-            }
+		const accountingTypeBD = await getDataBD("accounting", "accounting_id", accountingID, true);
+        if (accountingTypeBD) {
+            const update = await sequelize.query("UPDATE accounting SET disabled = true WHERE accounting_id = :id", {
+                replacements: {
+                    id: accountingID,
+                },
+            });
+            res.status(200).send(`El registro con ID ${accountingID} se deshabilitó correctamente`);
         } else {
-            res.status(401).json("Acceso denegado, la cuenta debe ser administrador");
+            res.status(404).send(`El registro con ID ${accountingID} no existe`);
         }
 	} catch (error) {
 		res.status(500).send("Ah ocurrido un error...." + error);
@@ -550,7 +545,7 @@ server.put("/budget/v1/actions/:name", validateToken, async (req, res) => {
 });
 
 
-/**** Endpoint para eliminar una región en especifico (Solo Administrador) ****/
+/**** Endpoint para eliminar un tipo de movimiento en especifico (Solo Administrador) ****/
 server.delete("/budget/v1/actions/:name", validateToken, async (req, res) => {
     admin = req.tokenInfo.isAdmin;
     const nameAction = req.params.name;
