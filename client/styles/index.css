@@ -397,6 +397,7 @@ body .main .main__registers .main__registers--container .items-register .registe
   position: relative;
   left: -3.75vw;
   color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
 }
 
 body .main .main__registers .main__registers--container .items-register .register .register__options .fa-ellipsis-h {
@@ -526,6 +527,31 @@ body .main .main__modal .main__modal--container .data-modal .data-modal__info::-
 }
 
 body .main .main__modal .main__modal--container .data-modal .data-modal__info::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body .main .main__modal .main__modal--container .data-modal .update-concept {
+  line-height: 50px;
+  background: transparent;
+  border-left: 1px solid #ffffff;
+  padding-left: 8px;
+  outline-style: none;
+  color: #ffffff;
+}
+
+body .main .main__modal .main__modal--container .data-modal .update-concept::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body .main .main__modal .main__modal--container .data-modal .update-concept:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body .main .main__modal .main__modal--container .data-modal .update-concept::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+body .main .main__modal .main__modal--container .data-modal .update-concept::placeholder {
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -842,10 +868,18 @@ body .main .main__modalDelete .main__modalDelete--container .container-buttons .
     margin: 0 auto;
   }
   body .main .main__modal .main__modal--container .data-modal .data-modal__text {
-    margin-right: 110px;
+    position: absolute;
+    left: 36vw;
+  }
+  body .main .main__modal .main__modal--container .data-modal .desktop {
+    position: absolute;
+    left: 35.2vw;
+  }
+  body .main .main__modal .main__modal--container .data-modal .update-concept {
+    margin-left: 16vw;
   }
   body .main .main__modal .main__modal--container .data-modal .data-modal__info {
-    padding-left: 50px;
+    margin-left: 16vw;
   }
   body .main .main__modal .main__modal--container .button-modal {
     width: 250px;

@@ -349,6 +349,7 @@ body {
                             position: relative;
                             left: -3.75vw;
                             color: rgba(255,255,255,0.50);
+                            cursor: pointer;
         
                             .fa-ellipsis-h {
                                 font-size: 5.33vw;
@@ -449,6 +450,19 @@ body {
                     }
 
                     .data-modal__info {
+                        line-height: 50px;
+                        background: transparent;
+                        border-left: 1px solid #ffffff;
+                        padding-left: 8px;
+                        outline-style: none;
+                        color: #ffffff;
+                        &::placeholder {
+                            color: rgba(255,255,255,.8);
+
+                        }
+                    }
+
+                    .update-concept {
                         line-height: 50px;
                         background: transparent;
                         border-left: 1px solid #ffffff;
@@ -882,11 +896,21 @@ body {
                         margin: 0 auto;
     
                         .data-modal__text {
-                            margin-right: 110px;
+                            position: absolute;
+                            left: 36vw;
+                        }
+
+                        .desktop {
+                            position: absolute;
+                            left: 35.2vw;
+                        }
+
+                        .update-concept {
+                            margin-left: 16vw;
                         }
     
                         .data-modal__info {
-                            padding-left: 50px;
+                            margin-left: 16vw;
                         }
                     }
     

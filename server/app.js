@@ -368,38 +368,12 @@ server.put("/budget/v1/accounting/:id", validateToken, async (req, res) => {
         });
         
         if (accountingRegistered.length > 0) {
-            if (concept && price) {
+            if (concept || price) {
                 const updateBD = await sequelize.query(
                     "UPDATE accounting SET concept = :description, price = :cash WHERE accounting_id = :id",
                     {
                         replacements: {
                             description: concept,
-                            cash: price,
-                            id: accountingID,
-                        },
-                    }
-                );
-                const actionTable = await getDataBD("actions", "action_id", accountingRegistered[0].action_id, true);
-                console.log(`El ${actionTable[0].name} ha sido actualizado correctamente`)
-                res.status(200).json(`El ${actionTable[0].name} ha sido actualizado correctamente`);
-            } else if (concept) {
-                const updateBD = await sequelize.query(
-                    "UPDATE accounting SET concept = :description WHERE accounting_id = :id",
-                    {
-                        replacements: {
-                            description: concept,
-                            id: accountingID,
-                        },
-                    }
-                );
-                const actionTable = await getDataBD("actions", "action_id", accountingRegistered[0].action_id, true);
-                console.log(`El ${actionTable[0].name} ha sido actualizado correctamente`)
-                res.status(200).json(`El ${actionTable[0].name} ha sido actualizado correctamente`);
-            } else if (price) {
-                const updateBD = await sequelize.query(
-                    "UPDATE accounting SET price = :cash WHERE accounting_id = :id",
-                    {
-                        replacements: {
                             cash: price,
                             id: accountingID,
                         },

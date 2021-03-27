@@ -49,6 +49,7 @@ async function getRegistersBD(e) {
             responseType: 'json'
         }).then((success) => {
             if (success.statusText) {
+                console.log(success.data);
                 if (success.data.length) {
                     printContentRegisters(success.data);      
                     printBalance(success.data);      
@@ -115,8 +116,10 @@ function printContentRegisters(data) {
 
         concept.textContent = element.concept;
         concept.classList.add('register__concept');
+        concept.setAttribute('data-text', element.concept);
         amount.textContent = `$ ${element.price}`;
         amount.classList.add('register__amount');
+        amount.setAttribute('data-amount', element.price);
         date.textContent = element.date;
         date.textContent = date.textContent.substr(0,19);
         date.classList.add('register__date');
@@ -255,7 +258,10 @@ function modalEdit(ev) {
 
 /// Función que muestra un modal para actualizar el valor del registro y una vez realiado en 2segundos lo manda al home
 function updateAmount(ev) {
+    const itemConcept = ev.target.parentElement.parentElement.parentElement.children[0];
     const itemId = ev.target.parentElement.parentElement.parentElement.children[4];
+    const itemPrice = ev.target.parentElement.parentElement.parentElement.children[1];
+    // console.log(itemConcept);
     const body = document.getElementsByTagName('body');
 
     const main = document.querySelector('.main');
@@ -264,8 +270,11 @@ function updateAmount(ev) {
     const modalIcon = document.createElement('i');
     const modalTitle = document.createElement('h3');
     const modalTable = document.createElement('div');
+    const modalTableConcept = document.createElement('div');
     const modaltext = document.createElement('p');
+    const modaltextConcept = document.createElement('p');
     const inputTable = document.createElement('input');
+    const inputTableConcept = document.createElement('input');
     const modalButton = document.createElement('input');
 
     if (ev.target.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.children[2]) {
@@ -282,9 +291,16 @@ function updateAmount(ev) {
     modalIcon.classList.add('fa-times');
     modalTitle.textContent = 'Actualiza el monto de tu registro';
     modalTitle.classList.add('text-modal');
+    modalTableConcept.classList.add('data-modal');
     modalTable.classList.add('data-modal');
+    modaltextConcept.classList.add('data-modal__text');
+    modaltextConcept.classList.add('desktop');
+    modaltextConcept.textContent = 'Concepto';
     modaltext.classList.add('data-modal__text');
     modaltext.textContent = 'Monto';
+    inputTableConcept.classList.add('update-concept');
+    inputTableConcept.setAttribute('type', 'text');
+    inputTableConcept.setAttribute('placeholder', 'Descripcion');
     inputTable.classList.add('data-modal__info');
     inputTable.setAttribute('type', 'number');
     inputTable.setAttribute('placeholder', 'Valor del nuevo monto');
@@ -298,7 +314,10 @@ function updateAmount(ev) {
     containerModal.appendChild(modalIcon);
     containerModal.appendChild(modalTitle);
     containerModal.appendChild(modalTitle);
+    containerModal.appendChild(modalTableConcept);
     containerModal.appendChild(modalTable);
+    modalTableConcept.appendChild(modaltextConcept);
+    modalTableConcept.appendChild(inputTableConcept);
     modalTable.appendChild(modaltext);
     modalTable.appendChild(inputTable);
     containerModal.appendChild(modalButton);   
@@ -307,16 +326,25 @@ function updateAmount(ev) {
     modalIcon.addEventListener('click', closeWindowModal);
     modalButton.addEventListener('click', async (ev) => {
         ev.preventDefault();
-        const priceUpgrade = document.querySelector('.data-modal__info');
-        if (!priceUpgrade.value) {
-            priceUpgrade.value = 0;
-        }
         const id = itemId.getAttribute('data-id');
+        const concept = itemConcept.getAttribute('data-text');
+        const amount = itemPrice.getAttribute('data-amount');
+
+        let priceUpgrade = document.querySelector('.data-modal__info');
+        let conceptUpgrade = document.querySelector('.update-concept');
+
+        if (!priceUpgrade.value) {
+            priceUpgrade.value = amount;
+        }
+        if (!conceptUpgrade.value) {
+            conceptUpgrade.value = concept;
+        }
+
         const token = await obtenerTokenLocalStorage();
         await axios({
             method: 'put',
             headers: { Authorization: `Bearer ${token.token}` },       
-            params: { price: `${priceUpgrade.value}` } , 
+            params: { concept: `${conceptUpgrade.value}`, price: `${priceUpgrade.value}` } , 
             url: `http://localhost:3000/budget/v1/accounting/${id}`,        
             responseType: 'json'
         }).then((success) => {
