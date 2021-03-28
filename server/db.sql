@@ -41,7 +41,7 @@ VALUES
     "Henriquez",
     "martin@martin.com",
     "Mh2020-+",
-    TRUE,
+    FALSE,
     FALSE
   );
 
@@ -51,10 +51,23 @@ VALUES
   (
     NULL,
     "Ana",
-    "1",
+    "Giraldo",
     "ana@ana.com",
     "Mh2020-+",
     FALSE,
+    FALSE
+  );
+
+INSERT INTO
+  users
+VALUES
+  (
+    NULL,
+    "admin",
+    "admin",
+    "admin@admin.com",
+    "admin",
+    TRUE,
     FALSE
   );
 
@@ -130,6 +143,33 @@ VALUES
     1,
     FALSE
   ),
+  (
+    NULL,
+    "Kit de limpieza",
+    100000,
+    NOW(),
+    2,
+    1,
+    FALSE
+  )
+  (
+    NULL,
+    "Kit de limpieza",
+    100000,
+    NOW(),
+    2,
+    1,
+    FALSE
+  )
+  (
+    NULL,
+    "Kit de limpieza",
+    100000,
+    NOW(),
+    2,
+    1,
+    FALSE
+  )
   (
     NULL,
     "Kit de limpieza",
