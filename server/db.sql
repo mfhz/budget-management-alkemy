@@ -40,7 +40,7 @@ VALUES
     "Martin",
     "Henriquez",
     "martin@martin.com",
-    "Mh2020-+",
+    "Mh2021",
     FALSE,
     FALSE
   );
@@ -53,7 +53,7 @@ VALUES
     "Ana",
     "Giraldo",
     "ana@ana.com",
-    "Mh2020-+",
+    "Mh2021",
     FALSE,
     FALSE
   );
